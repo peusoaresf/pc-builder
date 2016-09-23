@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PcBuilder</string>
+
+    <string-array name='resolucoes_array'>
+        <item>1280x720</item>
+        <item>1600x900</item>
+        <item>1920x1080</item>
+        <item>2560x1440</item>
+        <item>4K</item>
+        <item>8K</item>
+    </string-array>
+</resources>
