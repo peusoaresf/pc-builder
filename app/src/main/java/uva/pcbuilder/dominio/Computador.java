@@ -9,7 +9,7 @@ import java.util.List;
 public class Computador {
     private Motherboard mobo;
     private Processor cpu;
-    private OpticalDiscDriver opticalDiscDriver;
+    private OpticalDiskDriver opticalDiskDriver;
     private Case pcCase;
     private Psu psu;
     private List<MainMemory> ramSticks;
@@ -30,8 +30,8 @@ public class Computador {
         cpu = p;
     }
 
-    public void addOpticalDiscDriver(OpticalDiscDriver odd) {
-        opticalDiscDriver = odd;
+    public void addOpticalDiscDriver(OpticalDiskDriver odd) {
+        opticalDiskDriver = odd;
     }
 
     public void addPcCase(Case c) {

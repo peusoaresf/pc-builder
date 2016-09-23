@@ -3,14 +3,14 @@ package uva.pcbuilder.dominio;
 /**
  * Created by peuso on 22/09/2016.
  */
-public class OpticalDiscDriver {
+public class OpticalDiskDriver {
 
     private float consumoEletrico;
     private float preco;
     private String marca;
     private String capacidade;
 
-    public OpticalDiscDriver(float consumoEletrico, float preco, String marca, String capacidade) {
+    public OpticalDiskDriver(float consumoEletrico, float preco, String marca, String capacidade) {
         this.consumoEletrico = consumoEletrico;
         this.preco = preco;
         this.marca = marca;

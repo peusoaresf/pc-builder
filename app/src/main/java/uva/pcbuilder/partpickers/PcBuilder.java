@@ -4,12 +4,11 @@ import android.content.Context;
 
 import java.util.List;
 
-import uva.pcbuilder.database.DbHelper;
 import uva.pcbuilder.dominio.Case;
 import uva.pcbuilder.dominio.Computador;
 import uva.pcbuilder.dominio.MainMemory;
 import uva.pcbuilder.dominio.Motherboard;
-import uva.pcbuilder.dominio.OpticalDiscDriver;
+import uva.pcbuilder.dominio.OpticalDiskDriver;
 import uva.pcbuilder.dominio.Processor;
 import uva.pcbuilder.dominio.Psu;
 import uva.pcbuilder.dominio.Storage;
@@ -27,10 +26,10 @@ import uva.pcbuilder.fuzzysystems.vga.FuzzySystemVGA;
  */
 public class PcBuilder {
 
-    private DbHelper dbHelper;
+    private PartPicker partPicker;
 
     public PcBuilder(Context context) {
-        dbHelper = new DbHelper(context);
+        partPicker = new PartPicker(context);
     }
 
     public Computador montarComputador(float orcamento) {
@@ -46,7 +45,7 @@ public class PcBuilder {
 
         Motherboard mobo;
         Processor cpu;
-        OpticalDiscDriver opticalDiscDriver;
+        OpticalDiskDriver opticalDiskDriver;
         Case pcCase;
         Psu psu;
         List<MainMemory> ramSticks;
@@ -74,17 +73,17 @@ public class PcBuilder {
         ExpertSystemCase expertSystemCase = new ExpertSystemCase();
         valorMaximoCase = expertSystemCase.calcularValorMaximo(orcamento);
 
-        mobo = dbHelper.getMobo(valorMaximoMobo);
-        cpu = dbHelper.getCpu(valorMaximoCpu);
-        opticalDiscDriver = dbHelper.getOpticalDiscDriver(valorMaximoOpticalDiskDrive);
-        pcCase = dbHelper.getPcCase(valorMaximoCase);
-        ramSticks = dbHelper.getRamSticks(valorMaximoRam);
-        gpus = dbHelper.getGpus(valorMaximoVga);
-        storageUnits = dbHelper.getStorageUnits(valorMaximoStorage);
+        mobo = partPicker.getMobo(valorMaximoMobo);
+        cpu = partPicker.getCpu(valorMaximoCpu, mobo.getCpuSocket());
+        opticalDiskDriver = partPicker.getOpticalDiscDriver(valorMaximoOpticalDiskDrive);
+        pcCase = partPicker.getPcCase(valorMaximoCase);
+        ramSticks = partPicker.getRamSticks(valorMaximoRam, mobo.getSupportedRamType());
+        gpus = partPicker.getGpus(valorMaximoVga);
+        storageUnits = partPicker.getStorageUnits(valorMaximoStorage);
 
         computador.addMotherboard(mobo);
         computador.addProcessor(cpu);
-        computador.addOpticalDiscDriver(opticalDiscDriver);
+        computador.addOpticalDiscDriver(opticalDiskDriver);
         computador.addPcCase(pcCase);
         computador.addRamSticks(ramSticks);
         computador.addGpus(gpus);

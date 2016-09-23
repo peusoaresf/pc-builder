@@ -36,7 +36,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     // Tabela MainMemory
 
-    // Tabela OpticalDiscDriver
+    // Tabela OpticalDiskDriver
 
     // TabelaProcessor
 
