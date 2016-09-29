@@ -11,6 +11,7 @@ import java.util.List;
 
 import uva.pcbuilder.database.DbHelper;
 import uva.pcbuilder.dominio.Motherboard;
+import uva.pcbuilder.fuzzysystems.vga.FuzzySystemVGA;
 import uva.pcbuilder.partpickers.PcBuilder;
 import uva.pcbuilder.R;
 import uva.pcbuilder.dominio.Computador;
@@ -61,8 +62,16 @@ public class FormularioParametrosPcActivity extends AppCompatActivity implements
 
             float orcamento = Float.parseFloat(editTextOrcamento.getText().toString());
 
-            PcBuilder pcBuilder = new PcBuilder(this);
-            Computador computador = pcBuilder.montarComputador(orcamento);
+//            PcBuilder pcBuilder = new PcBuilder(this);
+//            Computador computador = pcBuilder.montarComputador(orcamento);
+
+            FuzzySystemVGA fuzzySystemVGA = new FuzzySystemVGA();
+            float precoVGA = fuzzySystemVGA.calcularValorMaximo(orcamento);
+
+            System.out.println(precoVGA);
+
+
+            Toast.makeText(FormularioParametrosPcActivity.this, "Valor VGA: " + precoVGA, Toast.LENGTH_SHORT).show();
         }
     }
 
