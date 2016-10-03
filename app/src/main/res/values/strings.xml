@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">PcBuilder</string>
+    <string name="tab_favoritos">Favoritos</string>
+    <string name="tab_part_picker">PartPicker</string>
+    <string name="tab_pc_builder">PcBuilder</string>
 
     <string-array name='resolucoes_array'>
         <item>1280x720</item>
