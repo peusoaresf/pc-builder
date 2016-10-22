@@ -1,4 +1,4 @@
-package uva.pcbuilder;
+package uva.pcbuilder.util;
 
 /**
  * Created by peuso on 03/10/2016.

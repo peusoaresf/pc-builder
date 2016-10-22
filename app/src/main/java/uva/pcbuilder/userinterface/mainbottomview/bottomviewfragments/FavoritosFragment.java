@@ -1,4 +1,4 @@
-package uva.pcbuilder.fragments;
+package uva.pcbuilder.userinterface.mainbottomview.bottomviewfragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,18 +10,23 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
+import uva.pcbuilder.userinterface.MainActivity;
 import uva.pcbuilder.R;
 
-public class FragmentFavoritos extends Fragment {
+public class FavoritosFragment extends Fragment {
 
     private FrameLayout fragmentContainer;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_favoritos, container, false);
+        View view = inflater.inflate(R.layout.fragment_favoritos, container, false);
+
+//        setHasOptionsMenu(true);
 
         fragmentContainer = (FrameLayout) view.findViewById(R.id.activity_favoritos);
+
+//        ( (MainActivity) getActivity()).getSupportActionBar().hide();
 
         return view;
     }
@@ -32,6 +37,8 @@ public class FragmentFavoritos extends Fragment {
     public void willBeDisplayed() {
         // Do what you want here, for example animate the content
         if (fragmentContainer != null) {
+            ((MainActivity)getActivity()).getSupportActionBar().setShowHideAnimationEnabled(false);
+            ((MainActivity)getActivity()).getSupportActionBar().hide();
             Animation fadeIn = AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in);
             fragmentContainer.startAnimation(fadeIn);
         }
@@ -51,7 +58,7 @@ public class FragmentFavoritos extends Fragment {
 
 
 
-//public class FragmentFavoritos extends AppCompatActivity implements View.OnClickListener/*AdapterView.OnItemSelectedListener*/ {
+//public class FavoritosFragment extends AppCompatActivity implements View.OnClickListener/*AdapterView.OnItemSelectedListener*/ {
 //
 ////    private Spinner spinnerResolucao;
 //    private Button btnMontarPc;
@@ -60,7 +67,7 @@ public class FragmentFavoritos extends Fragment {
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_favoritos);
+//        setContentView(R.layout.fragment_favoritos);
 //
 //        btnMontarPc = (Button) findViewById(R.id.btnMontarPC);
 //        btnMontarPc.setOnClickListener(this);
@@ -91,9 +98,9 @@ public class FragmentFavoritos extends Fragment {
 ////                        mobo.getMarca(), mobo.getModelo(), mobo.getCpuSocket(),
 ////                         mobo.getCpuSocket(), mobo.getPreco(), mobo.getConsumoEletrico());
 ////            if (db.insertMotherboard("Gigabyte", "GA-H110M-H", "lga1151", "ddr3", 369.9f, 40))
-////                Toast.makeText(FragmentFavoritos.this, "Insert bem sucedido", Toast.LENGTH_SHORT).show();
+////                Toast.makeText(FavoritosFragment.this, "Insert bem sucedido", Toast.LENGTH_SHORT).show();
 ////            else
-////                Toast.makeText(FragmentFavoritos.this, "Erro ao inserir novo valor", Toast.LENGTH_SHORT).show();
+////                Toast.makeText(FavoritosFragment.this, "Erro ao inserir novo valor", Toast.LENGTH_SHORT).show();
 //
 //            float orcamento = Float.parseFloat(editTextOrcamento.getText().toString());
 //
@@ -106,7 +113,7 @@ public class FragmentFavoritos extends Fragment {
 //            System.out.println(precoVGA);
 //
 //
-//            Toast.makeText(FragmentFavoritos.this, "Valor VGA: " + precoVGA, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(FavoritosFragment.this, "Valor VGA: " + precoVGA, Toast.LENGTH_SHORT).show();
 //        }
 //    }
 //

@@ -1,4 +1,4 @@
-package uva.pcbuilder;
+package uva.pcbuilder.userinterface.mainbottomview;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

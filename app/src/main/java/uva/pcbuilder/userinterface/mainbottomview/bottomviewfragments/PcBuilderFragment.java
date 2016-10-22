@@ -1,4 +1,4 @@
-package uva.pcbuilder.fragments;
+package uva.pcbuilder.userinterface.mainbottomview.bottomviewfragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,10 +13,11 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import uva.pcbuilder.userinterface.MainActivity;
 import uva.pcbuilder.R;
 import uva.pcbuilder.fuzzysystems.vga.FuzzySystemVGA;
 
-public class FragmentPcBuilder extends Fragment implements View.OnClickListener{
+public class PcBuilderFragment extends Fragment implements View.OnClickListener{
 
     private FrameLayout fragmentContainer;
 
@@ -26,7 +27,9 @@ public class FragmentPcBuilder extends Fragment implements View.OnClickListener{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_pc_builder, container, false);
+        View view = inflater.inflate(R.layout.fragment_pc_builder, container, false);
+
+//        setHasOptionsMenu(true);
 
         fragmentContainer = (FrameLayout) view.findViewById(R.id.activity_pc_builder);
 
@@ -35,6 +38,8 @@ public class FragmentPcBuilder extends Fragment implements View.OnClickListener{
 
         editTextOrcamento = (EditText) view.findViewById(R.id.editTextOrcamento);
 //        editTextOrcamento.addTextChangedListener(new NumberTextWatcher(editTextOrcamento, "#,###"));
+
+//        ( (MainActivity) getActivity()).getSupportActionBar().hide();
 
         return view;
     }
@@ -45,6 +50,8 @@ public class FragmentPcBuilder extends Fragment implements View.OnClickListener{
     public void willBeDisplayed() {
         // Do what you want here, for example animate the content
         if (fragmentContainer != null) {
+            ((MainActivity)getActivity()).getSupportActionBar().setShowHideAnimationEnabled(false);
+            ((MainActivity)getActivity()).getSupportActionBar().hide();
             Animation fadeIn = AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in);
             fragmentContainer.startAnimation(fadeIn);
         }
@@ -55,6 +62,7 @@ public class FragmentPcBuilder extends Fragment implements View.OnClickListener{
      */
     public void willBeHidden() {
         if (fragmentContainer != null) {
+
             Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_out);
             fragmentContainer.startAnimation(fadeOut);
         }
