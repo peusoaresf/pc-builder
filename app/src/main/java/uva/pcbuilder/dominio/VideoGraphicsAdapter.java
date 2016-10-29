@@ -8,12 +8,18 @@ public class VideoGraphicsAdapter {
     private String nome;
     private String marca;
     private float consumo;
+    private float price;
 
-    public VideoGraphicsAdapter(int score, String nome, String marca, float consumo) {
+    public VideoGraphicsAdapter(int score, String nome, String marca, float consumo, float price) {
         this.score = score;
         this.nome = nome;
         this.marca = marca;
         this.consumo = consumo;
+        this.price = price;
+    }
+
+    public float getPreco() {
+        return price;
     }
 
     public int getScore() {

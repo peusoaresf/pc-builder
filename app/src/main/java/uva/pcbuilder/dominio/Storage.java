@@ -8,12 +8,18 @@ public class Storage {
     private float consumoEletrico;
     private String capacidade;
     private String marca;
+    private String modelo;
 
-    public Storage(float preco, float consumoEletrico, String capacidade, String marca) {
+    public Storage(float preco, float consumoEletrico, String capacidade, String marca, String m) {
         this.preco = preco;
         this.consumoEletrico = consumoEletrico;
         this.capacidade = capacidade;
         this.marca = marca;
+        this.modelo = m;
+    }
+
+    public String getModel() {
+        return modelo;
     }
 
     public float getPreco() {

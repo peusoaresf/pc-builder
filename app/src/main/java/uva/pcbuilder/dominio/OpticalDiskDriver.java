@@ -8,12 +8,14 @@ public class OpticalDiskDriver {
     private float consumoEletrico;
     private float preco;
     private String marca;
+    private String modelo;
     private String capacidade;
 
-    public OpticalDiskDriver(float consumoEletrico, float preco, String marca, String capacidade) {
+    public OpticalDiskDriver(float consumoEletrico, float preco, String marca, String m, String capacidade) {
         this.consumoEletrico = consumoEletrico;
         this.preco = preco;
         this.marca = marca;
+        this.modelo = m;
         this.capacidade = capacidade;
     }
 

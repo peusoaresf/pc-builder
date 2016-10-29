@@ -8,14 +8,16 @@ public class MainMemory {
     private float consumoEletrico;
     private int score;
     private String marca;
+    private String modelo;
     private String capacidade;
     private String tipo;
 
-    public MainMemory(float preco, float consumoEletrico, int score, String marca, String capacidade, String tipo) {
+    public MainMemory(float preco, float consumoEletrico, int score, String marca, String m, String capacidade, String tipo) {
         this.preco = preco;
         this.consumoEletrico = consumoEletrico;
         this.score = score;
         this.marca = marca;
+        this.modelo = m;
         this.capacidade = capacidade;
         this.tipo = tipo;
     }
