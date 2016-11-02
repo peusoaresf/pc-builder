@@ -4,6 +4,7 @@ package uva.pcbuilder.dominio;
  * Created by peuso on 22/09/2016.
  */
 public class VideoGraphicsAdapter {
+    private int idBanco;
     private int score;
     private String nome;
     private String marca;
@@ -16,6 +17,14 @@ public class VideoGraphicsAdapter {
         this.marca = marca;
         this.consumo = consumo;
         this.price = price;
+    }
+
+    public int getIdBanco() {
+        return idBanco;
+    }
+
+    public void setIdBanco(int i) {
+        idBanco = i;
     }
 
     public float getPreco() {

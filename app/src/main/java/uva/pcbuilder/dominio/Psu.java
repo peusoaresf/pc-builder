@@ -5,6 +5,7 @@ package uva.pcbuilder.dominio;
  */
 public class Psu {
 
+    private int idBanco;
     private int potencia;
     private int score;
     private float preco;
@@ -17,6 +18,14 @@ public class Psu {
         this.preco = price;
         this.nome = nome;
         this.marca = marca;
+    }
+
+    public int getIdBanco() {
+        return idBanco;
+    }
+
+    public void setIdBanco(int i) {
+        idBanco = i;
     }
 
     public float getPrice() {

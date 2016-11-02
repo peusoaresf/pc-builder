@@ -2,10 +2,11 @@ package uva.pcbuilder.partpickers;
 
 import android.content.Context;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import uva.pcbuilder.dominio.Case;
-import uva.pcbuilder.dominio.Computador;
+import uva.pcbuilder.dominio.Computer;
 import uva.pcbuilder.dominio.MainMemory;
 import uva.pcbuilder.dominio.Motherboard;
 import uva.pcbuilder.dominio.OpticalDiskDriver;
@@ -13,13 +14,7 @@ import uva.pcbuilder.dominio.Processor;
 import uva.pcbuilder.dominio.Psu;
 import uva.pcbuilder.dominio.Storage;
 import uva.pcbuilder.dominio.VideoGraphicsAdapter;
-import uva.pcbuilder.expertsystems.pcCase.ExpertSystemCase;
-import uva.pcbuilder.expertsystems.opticaldiskdrive.ExpertSystemOpticalDiskDrive;
-import uva.pcbuilder.expertsystems.ram.ExpertSystemRam;
-import uva.pcbuilder.expertsystems.storage.ExpertSystemStorage;
-import uva.pcbuilder.fuzzysystems.cpu.FuzzySystemCpu;
-import uva.pcbuilder.fuzzysystems.mobo.FuzzySystemMobo;
-import uva.pcbuilder.fuzzysystems.vga.FuzzySystemVGA;
+import uva.pcbuilder.fuzzylogic.fuzzycontrollers.VgaFuzzySystem;
 
 /**
  * Created by peuso on 22/09/2016.
@@ -32,68 +27,50 @@ public class PcBuilder {
         partPicker = new PartPicker(context);
     }
 
-    public Computador montarComputador(float orcamento) {
-        Computador computador = new Computador();
+    public Computer buildComputer(float budget) {
 
-        float valorMaximoMobo;
-        float valorMaximoCpu;
-        float valorMaximoOpticalDiskDrive;
-        float valorMaximoCase;
-        float valorMaximoRam;
-        float valorMaximoVga;
-        float valorMaximoStorage;
+        Computer computer = new Computer();
 
-        Motherboard mobo;
-        Processor cpu;
-        OpticalDiskDriver opticalDiskDriver;
-        Case pcCase;
-        Psu psu;
-        List<MainMemory> ramSticks;
-        List<VideoGraphicsAdapter> gpus;
-        List<Storage> storageUnits;
-
-        FuzzySystemVGA fuzzySystemVGA = new FuzzySystemVGA();
-        valorMaximoVga = fuzzySystemVGA.calcularValorMaximo(orcamento);
-
-//        FuzzySystemCpu fuzzySystemCpu = new FuzzySystemCpu();
-//        valorMaximoCpu = fuzzySystemCpu.calcularValorMaximo(orcamento);
+//        Motherboard mobo;
+//        Processor cpu;
+//        OpticalDiskDriver opticalDiskDriver;
+//        Case pcCase;
+//        List<MainMemory> ramSticks = new ArrayList<>();
+//        List<VideoGraphicsAdapter> gpus = new ArrayList<>();
+//        List<Storage> storageUnits = new ArrayList<>();
+//        Psu psu;
 //
-//        FuzzySystemMobo fuzzySystemMobo = new FuzzySystemMobo();
-//        valorMaximoMobo = fuzzySystemMobo.calcularValorMaximo(orcamento);
+//        MotherboardFuzzySystem motherboardFuzzySystem = new MotherboardFuzzySystem();
+//        mobo = partPicker.getMobo(motherboardFuzzySystem.calcularValorMaximo(budget));
 //
-//        ExpertSystemStorage expertSystemStorage = new ExpertSystemStorage();
-//        valorMaximoStorage = expertSystemStorage.calcularValorMaximo(orcamento);
+//        ProcessorFuzzySystem processorFuzzySystem = new ProcessorFuzzySystem();
+//        cpu = partPicker.getCpu(processorFuzzySystem.calcularValorMaximo(budget), mobo.getCpuSocket());
 //
-//        ExpertSystemOpticalDiskDrive expertSystemOpticalDiskDrive = new ExpertSystemOpticalDiskDrive();
-//        valorMaximoOpticalDiskDrive = expertSystemOpticalDiskDrive.calcularValorMaximo(orcamento);
+//        OpticalDiscDriverFuzzySystem opticalDiscDriverFuzzySystem = new OpticalDiscDriverFuzzySystem();
+//        opticalDiskDriver = partPicker.getOpticalDiscDriver(opticalDiscDriverFuzzySystem.calcularValorMaximo(budget));
 //
-//        ExpertSystemRam expertSystemRam = new ExpertSystemRam();
-//        valorMaximoRam = expertSystemRam.calcularValorMaximo(orcamento);
+//        CaseFuzzySystem caseFuzzySystem = new CaseFuzzySystem();
+//        pcCase = partPicker.getPcCase(caseFuzzySystem.calcularValorMaximo(budget));
 //
-//        ExpertSystemCase expertSystemCase = new ExpertSystemCase();
-//        valorMaximoCase = expertSystemCase.calcularValorMaximo(orcamento);
+//        MainMemoryFuzzySystem mainMemoryFuzzySystem = new MainMemoryFuzzySystem();
+//        ramSticks.addAll(partPicker.getRamSticks(mainMemoryFuzzySystem.calcularValorMaximo(budget)));
+//
+//        VgaFuzzySystem vgaFuzzySystem = new VgaFuzzySystem();
+//        gpus.addAll(partPicker.getGpus(vgaFuzzySystem.calcularValorMaximo(budget)));
+//
+//        StorageFuzzySystem storageFuzzySystem = new StorageFuzzySystem();
+//        storageUnits.addAll(partPicker.getStorageUnits(storageFuzzySystem.calcularValorMaximo(budget)));
+//
+//        computer.setMotherboard(mobo);
+//        computer.setProcessor(cpu);
+//        computer.setOpticalDiscDriver(opticalDiskDriver);
+//        computer.setCase(pcCase);
+//        computer.setRamSticks(ramSticks);
+//        computer.setGpus(gpus);
+//        computer.setStorageUnits(storageUnits);
+//
+//        computer.setPsu(partPicker.getPsu(computer, budget));
 
-//        mobo = partPicker.getMobo(valorMaximoMobo);
-//        cpu = partPicker.getCpu(valorMaximoCpu, mobo.getCpuSocket());
-//        opticalDiskDriver = partPicker.getOpticalDiscDriver(valorMaximoOpticalDiskDrive);
-//        pcCase = partPicker.getPcCase(valorMaximoCase);
-//        ramSticks = partPicker.getRamSticks(valorMaximoRam, mobo.getSupportedRamType());
-//        gpus = partPicker.getGpus(valorMaximoVga);
-//        storageUnits = partPicker.getStorageUnits(valorMaximoStorage);
-//
-//        computador.addMotherboard(mobo);
-//        computador.addProcessor(cpu);
-//        computador.addOpticalDiscDriver(opticalDiskDriver);
-//        computador.addPcCase(pcCase);
-//        computador.addRamSticks(ramSticks);
-//        computador.addGpus(gpus);
-//        computador.addStorageUnits(storageUnits);
-
-        PsuChooser psuChooser = new PsuChooser();
-        psu = psuChooser.pickRecommendedPsu(computador);
-
-        computador.addPsu(psu);
-
-        return computador;
+        return computer;
     }
 }

@@ -4,6 +4,8 @@ package uva.pcbuilder.dominio;
  * Created by peuso on 22/09/2016.
  */
 public class Storage {
+
+    private int idBanco;
     private float preco;
     private float consumoEletrico;
     private String capacidade;
@@ -16,6 +18,14 @@ public class Storage {
         this.capacidade = capacidade;
         this.marca = marca;
         this.modelo = m;
+    }
+
+    public int getIdBanco() {
+        return idBanco;
+    }
+
+    public void setIdBanco(int i) {
+        idBanco = i;
     }
 
     public String getModel() {

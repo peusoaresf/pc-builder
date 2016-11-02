@@ -4,6 +4,7 @@ package uva.pcbuilder.dominio;
  * Created by peuso on 22/09/2016.
  */
 public class MainMemory {
+    private int idBanco;
     private float preco;
     private float consumoEletrico;
     private int score;
@@ -20,6 +21,14 @@ public class MainMemory {
         this.modelo = m;
         this.capacidade = capacidade;
         this.tipo = tipo;
+    }
+
+    public int getIdBanco() {
+        return idBanco;
+    }
+
+    public void setIdBanco(int i) {
+        idBanco = i;
     }
 
     public float getPreco() {

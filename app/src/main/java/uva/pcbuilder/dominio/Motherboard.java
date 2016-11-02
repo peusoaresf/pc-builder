@@ -4,6 +4,7 @@ package uva.pcbuilder.dominio;
  * Created by peuso on 22/09/2016.
  */
 public class Motherboard {
+    private int idBanco;
     private float consumoEletrico;
     private float preco;
     private String marca;
@@ -18,6 +19,14 @@ public class Motherboard {
         this.modelo = modelo;
         this.cpuSocket = cpuSocket;
         this.supportedRamType = supportedRamType;
+    }
+
+    public int getIdBanco() {
+        return idBanco;
+    }
+
+    public void setIdBanco(int i) {
+        idBanco = i;
     }
 
     public float getConsumoEletrico() {

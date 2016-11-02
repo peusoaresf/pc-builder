@@ -5,6 +5,7 @@ package uva.pcbuilder.dominio;
  */
 public class OpticalDiskDriver {
 
+    private int idBanco;
     private float consumoEletrico;
     private float preco;
     private String marca;
@@ -17,6 +18,14 @@ public class OpticalDiskDriver {
         this.marca = marca;
         this.modelo = m;
         this.capacidade = capacidade;
+    }
+
+    public int getIdBanco() {
+        return idBanco;
+    }
+
+    public void setIdBanco(int i) {
+        idBanco = i;
     }
 
     public float getPreco() {

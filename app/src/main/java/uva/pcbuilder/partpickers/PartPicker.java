@@ -2,14 +2,17 @@ package uva.pcbuilder.partpickers;
 
 import android.content.Context;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import uva.pcbuilder.database.DbHelper;
 import uva.pcbuilder.dominio.Case;
+import uva.pcbuilder.dominio.Computer;
 import uva.pcbuilder.dominio.MainMemory;
 import uva.pcbuilder.dominio.Motherboard;
 import uva.pcbuilder.dominio.OpticalDiskDriver;
 import uva.pcbuilder.dominio.Processor;
+import uva.pcbuilder.dominio.Psu;
 import uva.pcbuilder.dominio.Storage;
 import uva.pcbuilder.dominio.VideoGraphicsAdapter;
 
@@ -20,9 +23,11 @@ import uva.pcbuilder.dominio.VideoGraphicsAdapter;
 public class PartPicker {
 
     private DbHelper dbHelper;
+    private PsuPicker psuPicker;
 
     public PartPicker(Context context) {
         dbHelper = new DbHelper(context);
+        psuPicker = new PsuPicker();
     }
 
     public Motherboard getMobo(float valorMaximo) {
@@ -32,7 +37,7 @@ public class PartPicker {
         // as que tenham valor menor que o calculado
         // para o orcamento
         // * Alterar metodo do banco para receber o orcamento
-        List<Motherboard> mobos = dbHelper.getAllMotherboards();
+        Motherboard mobo = dbHelper.getMotherboard(valorMaximo);
 
         // Varrer a lista de placas maes atras da melhor entre as
         // que estao dentro do orcamento
@@ -77,5 +82,19 @@ public class PartPicker {
         List<Storage> units = null;
     // acessa banco e processa lista atras do melhor dentro do orcamento
         return units;
+    }
+
+    public Psu getPsu(Computer pc, float valorMaximo) {
+        Psu psu = null;
+
+        // Eh preciso pegar todas as PSUs ate "valorMaximo"
+        // e passar como parametro para saber se algum delas eh potente para o computador.
+        // Se nao for, alguma inteligencia sera feita para decidir como prosseguir sem estourar
+        // o orcamento.
+        List<Psu> psus = new ArrayList<>();
+        psus.add(dbHelper.getPSU(valorMaximo));
+
+        psu = psuPicker.pickRecommendedPsu(psus, pc);
+        return psu;
     }
 }

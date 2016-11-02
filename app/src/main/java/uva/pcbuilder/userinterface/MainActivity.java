@@ -17,10 +17,10 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 import java.util.ArrayList;
 
 import uva.pcbuilder.R;
-import uva.pcbuilder.userinterface.mainbottomview.BottomViewPagerAdapter;
-import uva.pcbuilder.userinterface.mainbottomview.bottomviewfragments.FavoritosFragment;
-import uva.pcbuilder.userinterface.mainbottomview.bottomviewfragments.PartPickerFragment;
-import uva.pcbuilder.userinterface.mainbottomview.bottomviewfragments.PcBuilderFragment;
+import uva.pcbuilder.userinterface.adapters.BottomViewPagerAdapter;
+import uva.pcbuilder.userinterface.fragments.bottomnavigation.FavoritosFragment;
+import uva.pcbuilder.userinterface.fragments.bottomnavigation.PartPickerFragment;
+import uva.pcbuilder.userinterface.fragments.bottomnavigation.PcBuilderFragment;
 
 public class MainActivity extends AppCompatActivity
         implements AHBottomNavigation.OnTabSelectedListener {

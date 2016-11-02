@@ -4,6 +4,7 @@ package uva.pcbuilder.dominio;
  * Created by peuso on 22/09/2016.
  */
 public class Processor {
+    private int idBanco;
     private int score;
     private float preco;
     private float consumoEletrico;
@@ -18,6 +19,14 @@ public class Processor {
         this.socket = socket;
         this.nome = nome;
         this.marca = marca;
+    }
+
+    public int getIdBanco() {
+        return idBanco;
+    }
+
+    public void setIdBanco(int i) {
+        idBanco = i;
     }
 
     public int getScore() {

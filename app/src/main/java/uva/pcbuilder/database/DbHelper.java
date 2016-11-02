@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uva.pcbuilder.dominio.Case;
-import uva.pcbuilder.dominio.Computador;
+import uva.pcbuilder.dominio.Computer;
+import uva.pcbuilder.dominio.FavoriteBuild;
 import uva.pcbuilder.dominio.MainMemory;
 import uva.pcbuilder.dominio.Motherboard;
 import uva.pcbuilder.dominio.OpticalDiskDriver;
@@ -18,6 +19,7 @@ import uva.pcbuilder.dominio.Processor;
 import uva.pcbuilder.dominio.Psu;
 import uva.pcbuilder.dominio.Storage;
 import uva.pcbuilder.dominio.VideoGraphicsAdapter;
+import uva.pcbuilder.util.DateHelper;
 
 /**
  * Created by peuso on 23/09/2016.
@@ -616,8 +618,18 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
-    public List<Computador> getAllFavoriteBuilds() {
-        List<Computador> builds = new ArrayList<Computador>();
+    public List<FavoriteBuild> getAllFavoriteBuilds() {
+        List<FavoriteBuild> builds = new ArrayList<>();
+        if (builds.isEmpty()) {
+            Computer c1 = new Computer();
+            FavoriteBuild f1 = new FavoriteBuild(123, "Exemplo 1", "05/03/1995", c1);
+
+            Computer c2 = new Computer();
+            FavoriteBuild f2 = new FavoriteBuild(456, "Exemplo 2", DateHelper.nowString(), c2);
+
+            builds.add(f1);
+            builds.add(f2);
+        }
         return builds;
     }
 }
