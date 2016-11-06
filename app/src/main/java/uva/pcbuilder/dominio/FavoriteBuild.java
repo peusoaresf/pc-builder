@@ -2,11 +2,15 @@ package uva.pcbuilder.dominio;
 
 import java.util.Date;
 
+import uva.pcbuilder.util.DateHelper;
+
 /**
  * Created by peuso on 01/11/2016.
  */
 
 public class FavoriteBuild {
+
+    private static FavoriteBuild example;
 
     private int idBanco;
     private String nomeFavorito;
@@ -36,4 +40,12 @@ public class FavoriteBuild {
         return computer;
     }
 
+    public static FavoriteBuild createExample() {
+        if (example != null)
+            return example;
+        else {
+            example = new FavoriteBuild(-1, "Favorito#Exemplo", DateHelper.nowToString(), Computer.createExample());
+            return example;
+        }
+    }
 }

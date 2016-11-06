@@ -1,9 +1,16 @@
 package uva.pcbuilder.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by peuso on 22/09/2016.
  */
-public class MainMemory {
+public class MainMemory implements Hardware {
+
+    private static MainMemory example;
+    private static List<Hardware> listExample;
+
     private int idBanco;
     private float preco;
     private float consumoEletrico;
@@ -13,12 +20,12 @@ public class MainMemory {
     private String capacidade;
     private String tipo;
 
-    public MainMemory(float preco, float consumoEletrico, int score, String marca, String m, String capacidade, String tipo) {
+    public MainMemory(float preco, float consumoEletrico, int score, String marca, String modelo, String capacidade, String tipo) {
         this.preco = preco;
         this.consumoEletrico = consumoEletrico;
         this.score = score;
         this.marca = marca;
-        this.modelo = m;
+        this.modelo = modelo;
         this.capacidade = capacidade;
         this.tipo = tipo;
     }
@@ -43,15 +50,32 @@ public class MainMemory {
         return score;
     }
 
-    public String getMarca() {
-        return marca;
-    }
-
     public String getCapacidade() {
         return capacidade;
     }
 
     public String getTipo() {
         return tipo;
+    }
+
+    @Override
+    public String getMarca() {
+        return marca;
+    }
+
+    @Override
+    public String getModelo() {
+        return modelo;
+    }
+
+    public static List<Hardware> createExample() {
+        if (example != null)
+            return listExample;
+        else {
+            example = new MainMemory(100, 3, 1000, "Marca#Exemplo", "Modelo#Exemplo", "#GB", "TIPO#");
+            listExample = new ArrayList<>();
+            listExample.add(example);
+            return listExample;
+        }
     }
 }

@@ -23,11 +23,11 @@ public class DateHelper {
     public static String dateToString(Date inputDate) {
         return simpleDateFormat.format(inputDate);
     }
-    public static Date nowDate() {
+    public static Date nowToDate() {
         Date d = stringToDate(simpleDateFormat.format(new Date()));
         return d;
     }
-    public static String nowString() {
+    public static String nowToString() {
         String s = dateToString(new Date());
         return s;
     }

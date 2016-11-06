@@ -1,9 +1,16 @@
 package uva.pcbuilder.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by peuso on 22/09/2016.
  */
-public class Motherboard {
+public class Motherboard implements Hardware {
+
+    private static Motherboard example;
+    private static List<Hardware> listExample;
+
     private int idBanco;
     private float consumoEletrico;
     private float preco;
@@ -37,17 +44,32 @@ public class Motherboard {
         return preco;
     }
 
-    public String getMarca() { return marca; }
-
-    public String getModelo() {
-        return modelo;
-    }
-
     public String getCpuSocket() {
         return cpuSocket;
     }
 
     public String getSupportedRamType() {
         return supportedRamType;
+    }
+
+    @Override
+    public String getMarca() {
+        return marca;
+    }
+
+    @Override
+    public String getModelo() {
+        return modelo;
+    }
+
+    public static List<Hardware> createExample() {
+        if (example != null)
+            return listExample;
+        else {
+            example = new Motherboard(40, 100, "Marca#Exemplo", "Modelo#Exemplo", "Socket#", "RamType#");
+            listExample = new ArrayList<>();
+            listExample.add(example);
+            return listExample;
+        }
     }
 }

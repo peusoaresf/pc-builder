@@ -1,23 +1,29 @@
 package uva.pcbuilder.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by peuso on 22/09/2016.
  */
-public class OpticalDiskDriver {
+public class OpticalDiskDriver implements Hardware {
+
+    private static OpticalDiskDriver example;
+    private static List<Hardware> listExample;
 
     private int idBanco;
     private float consumoEletrico;
     private float preco;
     private String marca;
     private String modelo;
-    private String capacidade;
+    private String tipoMidia;
 
-    public OpticalDiskDriver(float consumoEletrico, float preco, String marca, String m, String capacidade) {
+    public OpticalDiskDriver(float consumoEletrico, float preco, String marca, String modelo, String tipoMidia) {
         this.consumoEletrico = consumoEletrico;
         this.preco = preco;
         this.marca = marca;
-        this.modelo = m;
-        this.capacidade = capacidade;
+        this.modelo = modelo;
+        this.tipoMidia = tipoMidia;
     }
 
     public int getIdBanco() {
@@ -32,11 +38,32 @@ public class OpticalDiskDriver {
         return preco;
     }
 
+    public float getConsumoEletrico() {
+        return consumoEletrico;
+    }
+
+    public String getTipoMidia() {
+        return tipoMidia;
+    }
+
+    @Override
     public String getMarca() {
         return marca;
     }
 
-    public String getCapacidade() {
-        return capacidade;
+    @Override
+    public String getModelo() {
+        return modelo;
+    }
+
+    public static List<Hardware> createExample() {
+        if (example != null)
+            return listExample;
+        else {
+            example = new OpticalDiskDriver(20, 100, "Marca#Exemplo", "Modelo#Exemplo", "TipoMidia#");
+            listExample = new ArrayList<>();
+            listExample.add(example);
+            return listExample;
+        }
     }
 }

@@ -1,19 +1,26 @@
 package uva.pcbuilder.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by peuso on 22/09/2016.
  */
-public class VideoGraphicsAdapter {
+public class VideoGraphicsAdapter implements Hardware {
+
+    private static VideoGraphicsAdapter example;
+    private static List<Hardware> listExample;
+
     private int idBanco;
     private int score;
-    private String nome;
+    private String modelo;
     private String marca;
     private float consumo;
     private float price;
 
-    public VideoGraphicsAdapter(int score, String nome, String marca, float consumo, float price) {
+    public VideoGraphicsAdapter(int score, String modelo, String marca, float consumo, float price) {
         this.score = score;
-        this.nome = nome;
+        this.modelo = modelo;
         this.marca = marca;
         this.consumo = consumo;
         this.price = price;
@@ -35,15 +42,28 @@ public class VideoGraphicsAdapter {
         return score;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
+    @Override
     public String getMarca() {
         return marca;
     }
 
     public float getConsumo() {
         return consumo;
+    }
+
+    @Override
+    public String getModelo() {
+        return modelo;
+    }
+
+    public static List<Hardware> createExample() {
+        if (example != null)
+            return listExample;
+        else {
+            example = new VideoGraphicsAdapter(1000, "Modelo#Exemplo", "Marca#Exemplo", 150, 100);
+            listExample = new ArrayList<>();
+            listExample.add(example);
+            return listExample;
+        }
     }
 }

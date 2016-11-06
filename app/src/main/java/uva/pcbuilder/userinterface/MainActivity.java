@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity
         viewPagerBottom = (AHBottomNavigationViewPager) findViewById(R.id.view_pager_bottom);
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floating_action_button);
 
-        //Aqui onde é adicionado os fragments no bottom
+        //Aqui onde é adicionado os fragments no bottomview
         viewPagerBottom.setOffscreenPageLimit(2);
         bottomViewPagerAdapter = new BottomViewPagerAdapter(getSupportFragmentManager());
         bottomViewPagerAdapter.add(pcBuilderFragment);
@@ -186,41 +186,3 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 }
-
-
-//public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-//
-//    private Button btnMontarPcParaUsuario;
-//    private Button btnUsuarioMontarPc;
-//
-//
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-////        super.onCreate(savedInstanceState);
-////        setContentView(R.layout.activity_main);
-////
-////        btnMontarPcParaUsuario = (Button) findViewById(R.id.btnMontarPcParaUsuario);
-////        btnMontarPcParaUsuario.setOnClickListener(this);
-////
-////        btnUsuarioMontarPc = (Button) findViewById(R.id.btnUsuarioMontarPc);
-////        btnUsuarioMontarPc.setOnClickListener(this);
-//    }
-//
-//    @Override
-//    public void onClick(View v) {
-//
-////        Intent intent;
-////
-////        switch (v.getId()) {
-////            case R.id.btnMontarPcParaUsuario:
-////                intent = new Intent(this, FavoritosFragment.class);
-////                startActivity(intent);
-////                break;
-////            case R.id.btnUsuarioMontarPc:
-////                intent = new Intent(this, PartPickerFragment.class);
-////                startActivity(intent);
-////                break;
-////        }
-//    }
-//}

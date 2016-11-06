@@ -1,23 +1,30 @@
 package uva.pcbuilder.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by peuso on 22/09/2016.
  */
-public class Processor {
+public class Processor implements Hardware {
+
+    private static Processor example;
+    private static List<Hardware> listExample;
+
     private int idBanco;
     private int score;
     private float preco;
     private float consumoEletrico;
     private String socket;
-    private String nome;
+    private String modelo;
     private String marca;
 
-    public Processor(int score, float preco, float consumoEletrico, String socket, String nome, String marca) {
+    public Processor(int score, float preco, float consumoEletrico, String socket, String modelo, String marca) {
         this.score = score;
         this.preco = preco;
         this.consumoEletrico = consumoEletrico;
         this.socket = socket;
-        this.nome = nome;
+        this.modelo = modelo;
         this.marca = marca;
     }
 
@@ -45,11 +52,24 @@ public class Processor {
         return socket;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
+    @Override
     public String getMarca() {
         return marca;
+    }
+
+    @Override
+    public String getModelo() {
+        return modelo;
+    }
+
+    public static List<Hardware> createExample() {
+        if (example != null)
+            return listExample;
+        else {
+            example = new Processor(1000, 100, 73, "Socket#", "Modelo#Exemplo", "Marca#Exemplo");
+            listExample = new ArrayList<>();
+            listExample.add(example);
+            return listExample;
+        }
     }
 }

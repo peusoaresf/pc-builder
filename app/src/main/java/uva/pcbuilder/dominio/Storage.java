@@ -1,9 +1,15 @@
 package uva.pcbuilder.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by peuso on 22/09/2016.
  */
-public class Storage {
+public class Storage implements Hardware {
+
+    private static Storage example;
+    private static List<Hardware> listExample;
 
     private int idBanco;
     private float preco;
@@ -12,12 +18,12 @@ public class Storage {
     private String marca;
     private String modelo;
 
-    public Storage(float preco, float consumoEletrico, String capacidade, String marca, String m) {
+    public Storage(float preco, float consumoEletrico, String capacidade, String marca, String modelo) {
         this.preco = preco;
         this.consumoEletrico = consumoEletrico;
         this.capacidade = capacidade;
         this.marca = marca;
-        this.modelo = m;
+        this.modelo = modelo;
     }
 
     public int getIdBanco() {
@@ -26,10 +32,6 @@ public class Storage {
 
     public void setIdBanco(int i) {
         idBanco = i;
-    }
-
-    public String getModel() {
-        return modelo;
     }
 
     public float getPreco() {
@@ -44,7 +46,25 @@ public class Storage {
         return capacidade;
     }
 
+    @Override
     public String getMarca() {
         return marca;
+    }
+
+    @Override
+    public String getModelo() {
+        return modelo;
+    }
+
+    public static List<Hardware> createExample() {
+        if (example != null) {
+            return listExample;
+        }
+        else {
+            example = new Storage(100, 8, "#TB", "Marca#Exemplo", "Modelo#Exemplo");
+            listExample = new ArrayList<>();
+            listExample.add(example);
+            return listExample;
+        }
     }
 }

@@ -8,6 +8,8 @@ import java.util.List;
  */
 public class Computer {
 
+    private static Computer example;
+
     private Motherboard mobo;
     private Processor cpu;
     private OpticalDiskDriver opticalDiskDriver;
@@ -85,5 +87,29 @@ public class Computer {
 
     public List<Storage> getStorageUnits() {
         return storageUnits;
+    }
+
+    public static Computer createExample() {
+        if (example != null) {
+            return example;
+        }
+        else {
+            example = new Computer();
+            example.setMotherboard((Motherboard) Motherboard.createExample().get(0));
+            example.setProcessor((Processor) Processor.createExample().get(0));
+            example.setOpticalDiscDriver((OpticalDiskDriver) OpticalDiskDriver.createExample().get(0));
+            example.setCase((Case) Case.createExample().get(0));
+            example.setPsu((Psu) Psu.createExample().get(0));
+            List<MainMemory> e1 = new ArrayList<>();
+            e1.add((MainMemory) MainMemory.createExample().get(0));
+            example.setRamSticks(e1);
+            List<VideoGraphicsAdapter> e2 = new ArrayList<>();
+            e2.add((VideoGraphicsAdapter) VideoGraphicsAdapter.createExample().get(0));
+            example.setGpus(e2);
+            List<Storage> e3 = new ArrayList<>();
+            e3.add((Storage) Storage.createExample().get(0));
+            example.setStorageUnits(e3);
+            return example;
+        }
     }
 }

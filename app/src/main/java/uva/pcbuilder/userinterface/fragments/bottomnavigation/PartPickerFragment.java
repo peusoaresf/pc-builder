@@ -63,8 +63,8 @@ public class PartPickerFragment extends Fragment implements ActionBar.TabListene
 
     public void willBeDisplayed() {
         if (fragmentContainer != null) {
-            ((MainActivity)getActivity()).getSupportActionBar().setShowHideAnimationEnabled(false);
-            ((MainActivity)getActivity()).getSupportActionBar().show();
+            ((MainActivity) getActivity()).getSupportActionBar().setShowHideAnimationEnabled(false);
+            ((MainActivity) getActivity()).getSupportActionBar().show();
             Animation fadeIn = AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in);
             fragmentContainer.startAnimation(fadeIn);
         }
