@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layoutHardware">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_gravity="center"
+        android:descendantFocusability="blocksDescendants">
+        // Como existe um botao no componente da listview, nao eh possivel "escutar"
+        // o evento de clique no item sem o parametro acima.
+
+        <TextView
+            android:text="MarcaExemplo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textMarcaHardware"
+            android:layout_weight="0.4"
+            android:gravity="center"/>
+
+        <TextView
+            android:text="ModeloExemplo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textModelo"
+            android:layout_weight="0.4"
+            android:gravity="center"/>
+
+        <Button
+            android:text="Adicionar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAdicionar"
+            android:layout_weight="0.01"
+            android:textSize="10sp"
+            android:gravity="center_vertical|center_horizontal|center" />
+    </LinearLayout>
+</LinearLayout>
