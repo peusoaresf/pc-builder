@@ -1,5 +1,6 @@
 package uva.pcbuilder.userinterface.fragments.bottomnavigation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,11 +14,17 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import java.util.List;
+
+import uva.pcbuilder.dominio.Computer;
+import uva.pcbuilder.dominio.Hardware;
 import uva.pcbuilder.fuzzylogic.fuzzycontrollers.VgaFuzzySystem;
+import uva.pcbuilder.partpickers.PcBuilder;
+import uva.pcbuilder.userinterface.CarrinhoActivity;
 import uva.pcbuilder.userinterface.MainActivity;
 import uva.pcbuilder.R;
 
-public class PcBuilderFragment extends Fragment implements View.OnClickListener{
+public class PcBuilderFragment extends Fragment implements View.OnClickListener {
 
     private FrameLayout fragmentContainer;
 
@@ -60,9 +67,20 @@ public class PcBuilderFragment extends Fragment implements View.OnClickListener{
         switch (v.getId()) {
             case R.id.btnMontarPc:
                 float orcamento = Float.parseFloat(editTextOrcamento.getText().toString());
-                VgaFuzzySystem vgaFuzzySystem = new VgaFuzzySystem();
-                float precoVGA = vgaFuzzySystem.calcularValorMaximo(orcamento);
-                Toast.makeText(this.getActivity(), "Preço VGA: " + precoVGA, Toast.LENGTH_LONG).show();
+                if (orcamento < 800) {
+                    Toast.makeText(this.getActivity(), "Orçamento deve ser maior ou igual a 800", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    PcBuilder pcBuilder = new PcBuilder(v.getContext());
+                    Computer c = pcBuilder.buildComputer(orcamento);
+                    if (c.toList().isEmpty()) {
+                        Toast.makeText(this.getActivity(), "Não foi possível montar o computador", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Intent i = new Intent(getActivity(), CarrinhoActivity.class);
+                        i.putExtra(MainActivity.EXTRA_COMPUTER, c);
+                        startActivity(i);
+                    }
+                }
                 break;
         }
     }

@@ -1,12 +1,15 @@
 package uva.pcbuilder.dominio;
 
+import android.provider.MediaStore;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by peuso on 22/09/2016.
  */
-public class Computer {
+public class Computer implements Serializable {
 
     private static Computer example;
 
@@ -69,12 +72,20 @@ public class Computer {
         ramSticks.addAll(sticks);
     }
 
+    public void addRamStick(MainMemory stick) {
+        ramSticks.add(stick);
+    }
+
     public List<MainMemory> getRamSticks() {
         return ramSticks;
     }
 
     public void setGpus(List<VideoGraphicsAdapter> gpus) {
         this.gpus.addAll(gpus);
+    }
+
+    public void addGpu(VideoGraphicsAdapter gpu) {
+        gpus.add(gpu);
     }
 
     public List<VideoGraphicsAdapter> getGpus() {
@@ -85,8 +96,60 @@ public class Computer {
         storageUnits.addAll(units);
     }
 
+    public void addStorageUnit(Storage s) {
+        storageUnits.add(s);
+    }
+
     public List<Storage> getStorageUnits() {
         return storageUnits;
+    }
+
+    public void setHardware(Hardware hw) {
+        if (hw instanceof Case)
+            this.setCase((Case) hw);
+        if (hw instanceof MainMemory)
+            this.addRamStick((MainMemory) hw);
+        if (hw instanceof  Motherboard)
+            this.setMotherboard((Motherboard) hw);
+        if (hw instanceof OpticalDiskDriver)
+            this.setOpticalDiscDriver((OpticalDiskDriver) hw);
+        if (hw instanceof Processor)
+            this.setProcessor((Processor) hw);
+        if (hw instanceof Psu)
+            this.setPsu((Psu) hw);
+        if (hw instanceof Storage)
+            this.addStorageUnit((Storage) hw);
+        if (hw instanceof  VideoGraphicsAdapter)
+            this.addGpu((VideoGraphicsAdapter) hw);
+    }
+
+    public List<? extends Hardware> toList() {
+        List<? extends Hardware> list;
+        List<Hardware> aux = new ArrayList<>();
+        if (this.getCase() != null)
+            aux.add(this.getCase());
+        if (!this.getRamSticks().isEmpty()) {
+            if (this.getRamSticks().get(0) != null)
+            aux.add(this.getRamSticks().get(0));
+        }
+        if (this.getMotherboard() != null)
+            aux.add(this.getMotherboard());
+        if (this.getOpticalDiskDriver() != null)
+            aux.add(this.getOpticalDiskDriver());
+        if (this.getProcessor() != null)
+            aux.add(this.getProcessor());
+        if (this.getPsu() != null)
+            aux.add(this.getPsu());
+        if (!this.getStorageUnits().isEmpty()) {
+            if (this.getStorageUnits().get(0) != null)
+                aux.add(this.getStorageUnits().get(0));
+        }
+        if (!this.getGpus().isEmpty()) {
+            if (this.getGpus().get(0) != null)
+            aux.add(this.getGpus().get(0));
+        }
+        list = aux;
+        return list;
     }
 
     public static Computer createExample() {

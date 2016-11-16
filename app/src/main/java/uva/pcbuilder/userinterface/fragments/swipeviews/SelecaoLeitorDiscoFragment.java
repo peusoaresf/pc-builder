@@ -14,6 +14,7 @@ import java.util.List;
 import uva.pcbuilder.R;
 import uva.pcbuilder.database.DbHelper;
 import uva.pcbuilder.dominio.Case;
+import uva.pcbuilder.dominio.Computer;
 import uva.pcbuilder.dominio.Hardware;
 import uva.pcbuilder.dominio.OpticalDiskDriver;
 import uva.pcbuilder.userinterface.adapters.HardwareAdapter;
@@ -26,6 +27,12 @@ public class SelecaoLeitorDiscoFragment extends Fragment implements AdapterView.
 
     private DbHelper dbHelper;
     private List<? extends Hardware> leitoresDisco;
+
+    private Computer computadorCustom;
+
+    public void setComputadorCustom(Computer c) {
+        computadorCustom = c;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +48,7 @@ public class SelecaoLeitorDiscoFragment extends Fragment implements AdapterView.
             leitoresDisco = OpticalDiskDriver.createExample();
         }
 
-        listView.setAdapter(new HardwareAdapter(view.getContext(), leitoresDisco));
+        listView.setAdapter(new HardwareAdapter(view.getContext(), leitoresDisco, computadorCustom));
         listView.setOnItemClickListener(this);
 
         return view;

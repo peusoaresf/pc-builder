@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import uva.pcbuilder.dominio.Computer;
 import uva.pcbuilder.userinterface.fragments.swipeviews.SelecaoArmazenamentoFragment;
 import uva.pcbuilder.userinterface.fragments.swipeviews.SelecaoGabineteFragment;
 import uva.pcbuilder.userinterface.fragments.swipeviews.SelecaoLeitorDiscoFragment;
@@ -30,16 +31,24 @@ public class TopViewPagerAdapter extends FragmentPagerAdapter {
     private SelecaoLeitorDiscoFragment selecaoLeitorDiscoFragment;
     private SelecaoGabineteFragment selecaoGabineteFragment;
 
-    public TopViewPagerAdapter(FragmentManager fm) {
+    public TopViewPagerAdapter(FragmentManager fm, Computer c) {
         super(fm);
         selecaoVGAFragment = new SelecaoVGAFragment();
+        selecaoVGAFragment.setComputadorCustom(c);
         selecaoMOBOFragment = new SelecaoMOBOFragment();
+        selecaoMOBOFragment.setComputadorCustom(c);
         selecaoCPUFragment = new SelecaoCPUFragment();
+        selecaoCPUFragment.setComputadorCustom(c);
         selecaoRAMFragment = new SelecaoRAMFragment();
+        selecaoRAMFragment.setComputadorCustom(c);
         selecaoPSUFragment = new SelecaoPSUFragment();
+        selecaoPSUFragment.setComputadorCustom(c);
         selecaoArmazenamentoFragment = new SelecaoArmazenamentoFragment();
+        selecaoArmazenamentoFragment.setComputadorCustom(c);
         selecaoLeitorDiscoFragment = new SelecaoLeitorDiscoFragment();
+        selecaoLeitorDiscoFragment.setComputadorCustom(c);
         selecaoGabineteFragment = new SelecaoGabineteFragment();
+        selecaoGabineteFragment.setComputadorCustom(c);
     }
 
     @Override

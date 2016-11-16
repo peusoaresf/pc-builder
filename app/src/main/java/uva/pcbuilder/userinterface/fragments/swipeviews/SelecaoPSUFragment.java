@@ -13,6 +13,7 @@ import java.util.List;
 
 import uva.pcbuilder.R;
 import uva.pcbuilder.database.DbHelper;
+import uva.pcbuilder.dominio.Computer;
 import uva.pcbuilder.dominio.Hardware;
 import uva.pcbuilder.dominio.Psu;
 import uva.pcbuilder.userinterface.adapters.HardwareAdapter;
@@ -25,6 +26,12 @@ public class SelecaoPSUFragment extends Fragment implements AdapterView.OnItemCl
 
     private DbHelper dbHelper;
     private List<? extends Hardware> psus;
+
+    private Computer computadorCustom;
+
+    public void setComputadorCustom(Computer c) {
+        computadorCustom = c;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,7 +47,7 @@ public class SelecaoPSUFragment extends Fragment implements AdapterView.OnItemCl
             psus = Psu.createExample();
         }
 
-        listView.setAdapter(new HardwareAdapter(view.getContext(), psus));
+        listView.setAdapter(new HardwareAdapter(view.getContext(), psus, computadorCustom));
         listView.setOnItemClickListener(this);
 
         return view;

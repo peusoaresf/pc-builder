@@ -1,12 +1,13 @@
 package uva.pcbuilder.dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by peuso on 22/09/2016.
  */
-public class Psu implements Hardware {
+public class Psu implements Hardware, Serializable {
 
     private static Psu example;
     private static List<Hardware> listExample;

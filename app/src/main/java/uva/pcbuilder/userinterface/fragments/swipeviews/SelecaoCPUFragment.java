@@ -13,6 +13,7 @@ import java.util.List;
 
 import uva.pcbuilder.R;
 import uva.pcbuilder.database.DbHelper;
+import uva.pcbuilder.dominio.Computer;
 import uva.pcbuilder.dominio.Hardware;
 import uva.pcbuilder.dominio.Processor;
 import uva.pcbuilder.dominio.Storage;
@@ -26,6 +27,12 @@ public class SelecaoCPUFragment extends Fragment implements AdapterView.OnItemCl
 
     private DbHelper dbHelper;
     private List<? extends Hardware> cpus;
+
+    private Computer computadorCustom;
+
+    public void setComputadorCustom(Computer c) {
+        computadorCustom = c;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +48,7 @@ public class SelecaoCPUFragment extends Fragment implements AdapterView.OnItemCl
             cpus = Processor.createExample();
         }
 
-        listView.setAdapter(new HardwareAdapter(view.getContext(), cpus));
+        listView.setAdapter(new HardwareAdapter(view.getContext(), cpus, computadorCustom));
         listView.setOnItemClickListener(this);
 
         return view;

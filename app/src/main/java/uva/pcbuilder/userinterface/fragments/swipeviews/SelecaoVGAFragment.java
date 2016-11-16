@@ -15,6 +15,7 @@ import java.util.List;
 
 import uva.pcbuilder.R;
 import uva.pcbuilder.database.DbHelper;
+import uva.pcbuilder.dominio.Computer;
 import uva.pcbuilder.dominio.Hardware;
 import uva.pcbuilder.dominio.MainMemory;
 import uva.pcbuilder.dominio.Storage;
@@ -30,6 +31,12 @@ public class SelecaoVGAFragment extends Fragment implements AdapterView.OnItemCl
     private DbHelper dbHelper;
     private List<? extends Hardware> placasVideo;
 
+    private Computer computadorCustom;
+
+    public void setComputadorCustom(Computer c) {
+        computadorCustom = c;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,7 +51,7 @@ public class SelecaoVGAFragment extends Fragment implements AdapterView.OnItemCl
             placasVideo = VideoGraphicsAdapter.createExample();
         }
 
-        listView.setAdapter(new HardwareAdapter(view.getContext(), placasVideo));
+        listView.setAdapter(new HardwareAdapter(view.getContext(), placasVideo, computadorCustom));
         listView.setOnItemClickListener(this);
 
         return view;

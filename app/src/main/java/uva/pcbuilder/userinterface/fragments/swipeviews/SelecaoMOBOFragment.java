@@ -13,6 +13,7 @@ import java.util.List;
 
 import uva.pcbuilder.R;
 import uva.pcbuilder.database.DbHelper;
+import uva.pcbuilder.dominio.Computer;
 import uva.pcbuilder.dominio.Hardware;
 import uva.pcbuilder.dominio.Motherboard;
 import uva.pcbuilder.dominio.OpticalDiskDriver;
@@ -26,6 +27,12 @@ public class SelecaoMOBOFragment extends Fragment implements AdapterView.OnItemC
 
     private DbHelper dbHelper;
     private List<? extends Hardware> mobos;
+
+    private Computer computadorCustom;
+
+    public void setComputadorCustom(Computer c) {
+        computadorCustom = c;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +48,7 @@ public class SelecaoMOBOFragment extends Fragment implements AdapterView.OnItemC
             mobos = Motherboard.createExample();
         }
 
-        listView.setAdapter(new HardwareAdapter(view.getContext(), mobos));
+        listView.setAdapter(new HardwareAdapter(view.getContext(), mobos, computadorCustom));
         listView.setOnItemClickListener(this);
 
         return view;

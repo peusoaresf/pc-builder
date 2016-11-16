@@ -16,11 +16,14 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import uva.pcbuilder.dominio.Computer;
 import uva.pcbuilder.userinterface.MainActivity;
 import uva.pcbuilder.R;
 import uva.pcbuilder.userinterface.adapters.TopViewPagerAdapter;
 
 public class PartPickerFragment extends Fragment implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
+
+    private Computer computadorCustom;
 
     private FrameLayout fragmentContainer;
 
@@ -39,7 +42,7 @@ public class PartPickerFragment extends Fragment implements ActionBar.TabListene
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         viewPager = (ViewPager) view.findViewById(R.id.pager);
-        mAdapter = new TopViewPagerAdapter(super.getActivity().getSupportFragmentManager());
+        mAdapter = new TopViewPagerAdapter(super.getActivity().getSupportFragmentManager(), computadorCustom);
         viewPager.setAdapter(mAdapter);
         viewPager.addOnPageChangeListener(this);
 
@@ -59,6 +62,10 @@ public class PartPickerFragment extends Fragment implements ActionBar.TabListene
         }
 
         return view;
+    }
+
+    public void setComputadorCustom(Computer c) {
+        computadorCustom = c;
     }
 
     public void willBeDisplayed() {

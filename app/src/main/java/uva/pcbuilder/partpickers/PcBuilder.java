@@ -36,7 +36,7 @@ public class PcBuilder {
 //        OpticalDiskDriver opticalDiskDriver;
 //        Case pcCase;
 //        List<MainMemory> ramSticks = new ArrayList<>();
-//        List<VideoGraphicsAdapter> gpus = new ArrayList<>();
+        List<VideoGraphicsAdapter> gpus = new ArrayList<>();
 //        List<Storage> storageUnits = new ArrayList<>();
 //        Psu psu;
 //
@@ -55,8 +55,8 @@ public class PcBuilder {
 //        MainMemoryFuzzySystem mainMemoryFuzzySystem = new MainMemoryFuzzySystem();
 //        ramSticks.addAll(partPicker.getRamSticks(mainMemoryFuzzySystem.calcularValorMaximo(budget)));
 //
-//        VgaFuzzySystem vgaFuzzySystem = new VgaFuzzySystem();
-//        gpus.addAll(partPicker.getGpus(vgaFuzzySystem.calcularValorMaximo(budget)));
+        VgaFuzzySystem vgaFuzzySystem = new VgaFuzzySystem();
+        gpus.addAll(partPicker.getGpus(vgaFuzzySystem.calcularValorMaximo(budget)));
 //
 //        StorageFuzzySystem storageFuzzySystem = new StorageFuzzySystem();
 //        storageUnits.addAll(partPicker.getStorageUnits(storageFuzzySystem.calcularValorMaximo(budget)));
@@ -66,7 +66,7 @@ public class PcBuilder {
 //        computer.setOpticalDiscDriver(opticalDiskDriver);
 //        computer.setCase(pcCase);
 //        computer.setRamSticks(ramSticks);
-//        computer.setGpus(gpus);
+        computer.setGpus(gpus);
 //        computer.setStorageUnits(storageUnits);
 //
 //        computer.setPsu(partPicker.getPsu(computer, budget));

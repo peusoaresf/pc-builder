@@ -1,12 +1,13 @@
 package uva.pcbuilder.dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by peuso on 22/09/2016.
  */
-public class OpticalDiskDriver implements Hardware {
+public class OpticalDiskDriver implements Hardware, Serializable {
 
     private static OpticalDiskDriver example;
     private static List<Hardware> listExample;

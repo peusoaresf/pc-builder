@@ -1,12 +1,13 @@
 package uva.pcbuilder.dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by peuso on 22/09/2016.
  */
-public class Storage implements Hardware {
+public class Storage implements Hardware, Serializable {
 
     private static Storage example;
     private static List<Hardware> listExample;

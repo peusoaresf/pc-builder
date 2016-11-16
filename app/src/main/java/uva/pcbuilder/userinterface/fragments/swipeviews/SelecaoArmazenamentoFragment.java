@@ -15,6 +15,7 @@ import java.util.List;
 
 import uva.pcbuilder.R;
 import uva.pcbuilder.database.DbHelper;
+import uva.pcbuilder.dominio.Computer;
 import uva.pcbuilder.dominio.Hardware;
 import uva.pcbuilder.dominio.Storage;
 import uva.pcbuilder.userinterface.adapters.HardwareAdapter;
@@ -27,6 +28,12 @@ public class SelecaoArmazenamentoFragment extends Fragment implements AdapterVie
 
     private DbHelper dbHelper;
     private List<? extends Hardware> unidadesArmazenamento;
+
+    private Computer computadorCustom;
+
+    public void setComputadorCustom(Computer c) {
+        computadorCustom = c;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,7 +49,7 @@ public class SelecaoArmazenamentoFragment extends Fragment implements AdapterVie
             unidadesArmazenamento = Storage.createExample();
         }
 
-        listView.setAdapter(new HardwareAdapter(view.getContext(), unidadesArmazenamento));
+        listView.setAdapter(new HardwareAdapter(view.getContext(), unidadesArmazenamento, computadorCustom));
         listView.setOnItemClickListener(this);
 
         return view;

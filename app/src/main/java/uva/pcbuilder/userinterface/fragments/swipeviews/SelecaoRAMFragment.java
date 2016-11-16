@@ -13,6 +13,7 @@ import java.util.List;
 
 import uva.pcbuilder.R;
 import uva.pcbuilder.database.DbHelper;
+import uva.pcbuilder.dominio.Computer;
 import uva.pcbuilder.dominio.Hardware;
 import uva.pcbuilder.dominio.MainMemory;
 import uva.pcbuilder.dominio.Psu;
@@ -26,6 +27,12 @@ public class SelecaoRAMFragment extends Fragment implements AdapterView.OnItemCl
 
     private DbHelper dbHelper;
     private List<? extends Hardware> rams;
+
+    private Computer computadorCustom;
+
+    public void setComputadorCustom(Computer c) {
+        computadorCustom = c;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +48,7 @@ public class SelecaoRAMFragment extends Fragment implements AdapterView.OnItemCl
             rams = MainMemory.createExample();
         }
 
-        listView.setAdapter(new HardwareAdapter(view.getContext(), rams));
+        listView.setAdapter(new HardwareAdapter(view.getContext(), rams, computadorCustom));
         listView.setOnItemClickListener(this);
 
         return view;

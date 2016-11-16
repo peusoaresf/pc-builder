@@ -277,8 +277,8 @@ public class DbHelper extends SQLiteOpenHelper {
         Motherboard m = null;
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String stm = SELECT_PART_WITH_PRICE.replace("TABELA", MOTHERBOARD_TABLE_NAME)
-                                            .replace("COLUNA", MOTHERBOARD_COLUMN_PRICE)
+        String stm = SELECT_PART_WITH_PRICE.replace("TABLE", MOTHERBOARD_TABLE_NAME)
+                                            .replace("COLUMN", MOTHERBOARD_COLUMN_PRICE)
                                              .replace("PRICE", Float.toString(price))
                                               .replace("EXTRA_CONDITIONS", "");
 
@@ -375,8 +375,8 @@ public class DbHelper extends SQLiteOpenHelper {
         Case c = null;
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String stm = SELECT_PART_WITH_PRICE.replace("TABELA", CASE_TABLE_NAME)
-                                                .replace("COLUNA", CASE_COLUMN_PRICE)
+        String stm = SELECT_PART_WITH_PRICE.replace("TABLE", CASE_TABLE_NAME)
+                                                .replace("COLUMN", CASE_COLUMN_PRICE)
                                                 .replace("PRICE", Float.toString(price))
                                                 .replace("EXTRA_CONDITIONS", "");
 
@@ -483,8 +483,8 @@ public class DbHelper extends SQLiteOpenHelper {
         MainMemory m = null;
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String stm = SELECT_PART_WITH_PRICE.replace("TABELA", MAINMEMORY_TABLE_NAME)
-                                            .replace("COLUNA", MAINMEMORY_COLUMN_PRICE)
+        String stm = SELECT_PART_WITH_PRICE.replace("TABLE", MAINMEMORY_TABLE_NAME)
+                                            .replace("COLUMN", MAINMEMORY_COLUMN_PRICE)
                                             .replace("PRICE", Float.toString(price))
                                             .replace("EXTRA_CONDITIONS", " AND " + MAINMEMORY_COLUMN_TYPE + " = " + ramType);
 
@@ -588,8 +588,8 @@ public class DbHelper extends SQLiteOpenHelper {
         OpticalDiskDriver odd = null;
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String stm = SELECT_PART_WITH_PRICE.replace("TABELA", OPTICALDISKDRIVER_TABLE_NAME)
-                                                    .replace("COLUNA", OPTICALDISKDRIVER_COLUMN_PRICE)
+        String stm = SELECT_PART_WITH_PRICE.replace("TABLE", OPTICALDISKDRIVER_TABLE_NAME)
+                                                    .replace("COLUMN", OPTICALDISKDRIVER_COLUMN_PRICE)
                                                     .replace("PRICE", Float.toString(price))
                                                     .replace("EXTRA_CONDITIONS", "");
 
@@ -694,8 +694,8 @@ public class DbHelper extends SQLiteOpenHelper {
         Processor p = null;
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String stm = SELECT_PART_WITH_PRICE.replace("TABELA", PROCESSOR_TABLE_NAME)
-                                                .replace("COLUNA", PROCESSOR_COLUMN_PRICE)
+        String stm = SELECT_PART_WITH_PRICE.replace("TABLE", PROCESSOR_TABLE_NAME)
+                                                .replace("COLUMN", PROCESSOR_COLUMN_PRICE)
                                                 .replace("PRICE", Float.toString(price))
                                                 .replace("EXTRA_CONDITIONS", " AND " + PROCESSOR_COLUMN_SOCKET + " = " + socket);
 
@@ -797,8 +797,8 @@ public class DbHelper extends SQLiteOpenHelper {
         Psu psu = null;
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String stm = SELECT_PART_WITH_PRICE.replace("TABELA", PSU_TABLE_NAME)
-                                            .replace("COLUNA", PSU_COLUMN_PRICE)
+        String stm = SELECT_PART_WITH_PRICE.replace("TABLE", PSU_TABLE_NAME)
+                                            .replace("COLUMN", PSU_COLUMN_PRICE)
                                             .replace("PRICE", Float.toString(price))
                                             .replace("EXTRA_CONDITIONS", "");
 
@@ -900,8 +900,8 @@ public class DbHelper extends SQLiteOpenHelper {
         Storage s = null;
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String stm = SELECT_PART_WITH_PRICE.replace("TABELA", STORAGE_TABLE_NAME)
-                                            .replace("COLUNA", STORAGE_COLUMN_PRICE)
+        String stm = SELECT_PART_WITH_PRICE.replace("TABLE", STORAGE_TABLE_NAME)
+                                            .replace("COLUMN", STORAGE_COLUMN_PRICE)
                                             .replace("PRICE", Float.toString(price))
                                             .replace("EXTRA_CONDITIONS", "");
 
@@ -952,9 +952,12 @@ public class DbHelper extends SQLiteOpenHelper {
             Cursor res = db.rawQuery("select * from " + VGA_TABLE_NAME, null);
             res.moveToFirst();
 
+            System.out.println("Dentro select");
+
             while (!res.isAfterLast()) {
                 String brand = res.getString(res.getColumnIndex(VGA_COLUMN_BRAND));
                 String model = res.getString(res.getColumnIndex(VGA_COLUMN_MODEL));
+                System.out.println(brand);
                 int score = res.getInt(res.getColumnIndex(VGA_COLUMN_SCORE));
                 float price = res.getFloat(res.getColumnIndex(VGA_COLUMN_PRICE));
                 float powerConsumption = res.getFloat(res.getColumnIndex(VGA_COLUMN_POWERCONSUMPTION));
@@ -1002,8 +1005,8 @@ public class DbHelper extends SQLiteOpenHelper {
         VideoGraphicsAdapter vga = null;
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String stm = SELECT_PART_WITH_PRICE.replace("TABELA", VGA_TABLE_NAME)
-                                            .replace("COLUNA", VGA_COLUMN_PRICE)
+        String stm = SELECT_PART_WITH_PRICE.replace("TABLE", VGA_TABLE_NAME)
+                                            .replace("COLUMN", VGA_COLUMN_PRICE)
                                             .replace("PRICE", Float.toString(price))
                                             .replace("EXTRA_CONDITIONS", "");
 

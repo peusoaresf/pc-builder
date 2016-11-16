@@ -15,9 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".userinterface.fragments.bottomnavigation.PartPickerFragment" />
-        <activity android:name=".userinterface.fragments.bottomnavigation.FavoritosFragment" />
-        <activity android:name=".userinterface.fragments.bottomnavigation.PcBuilderFragment"></activity>
+        <!--<activity android:name=".userinterface.fragments.bottomnavigation.PartPickerFragment" />-->
+        <!--<activity android:name=".userinterface.fragments.bottomnavigation.FavoritosFragment" />-->
+        <!--<activity android:name=".userinterface.fragments.bottomnavigation.PcBuilderFragment" />-->
+        <activity android:name=".userinterface.CarrinhoActivity"></activity>
     </application>
 
 </manifest>

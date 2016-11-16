@@ -30,6 +30,10 @@ public class PartPicker {
         psuPicker = new PsuPicker();
     }
 
+    // Eh preciso ajustar os metodos no banco para retornar a lista
+    // de pecas com o valor menor  que o maximo, para que o partpicker tenha a inteligencia
+    // de decidir qual retornar ou quantos de tal peca por no pc.
+
     public Motherboard getMobo(float valorMaximo) {
         Motherboard motherboard = null;
         // Eh preciso passar o valorMaximo calculado de
@@ -37,7 +41,7 @@ public class PartPicker {
         // as que tenham valor menor que o calculado
         // para o orcamento
         // * Alterar metodo do banco para receber o orcamento
-        Motherboard mobo = dbHelper.getMotherboard(valorMaximo);
+        motherboard = dbHelper.getMotherboard(valorMaximo);
 
         // Varrer a lista de placas maes atras da melhor entre as
         // que estao dentro do orcamento
@@ -45,9 +49,11 @@ public class PartPicker {
         return motherboard;
     }
 
-    public Processor getCpu(float valorMaximo, String socket) {
+    public Processor getCpu(float valorMaximo, Motherboard m) {
         Processor processor = null;
         // consulta o banco e retorna a lista de processadores dentro do orcamento
+
+        processor = dbHelper.getProcessor(valorMaximo, m.getCpuSocket());
 
         // processa essa lista atras do melhor que encaixe na placa mae
 
@@ -56,30 +62,35 @@ public class PartPicker {
 
     public OpticalDiskDriver getOpticalDiscDriver(float valorMaximo) {
         OpticalDiskDriver opticalDiskDriver = null;
+        opticalDiskDriver = dbHelper.getOpticalDiskDriver(valorMaximo);
         // acessa banco e processa lista atras do melhor dentro do orcamento
         return opticalDiskDriver;
     }
 
     public Case getPcCase(float valorMaximo) {
         Case pcCase = null;
+        pcCase = dbHelper.getCase(valorMaximo);
     // acessa banco e processa lista atras do melhor dentro do orcamento
         return pcCase;
     }
 
-    public List<MainMemory> getRamSticks(float valorMaximo, String tipoMemoria) {
-        List<MainMemory> sticks = null;
+    public List<MainMemory> getRamSticks(float valorMaximo, Motherboard m) {
+        List<MainMemory> sticks = new ArrayList<>();
+        sticks.add(dbHelper.getMainMemory(valorMaximo, m.getSupportedRamType()));
     // acessa banco e processa lista atras do melhor dentro do orcamento
         return sticks;
     }
 
     public List<VideoGraphicsAdapter> getGpus(float valorMaximo) {
-        List<VideoGraphicsAdapter> gpus = null;
+        List<VideoGraphicsAdapter> gpus = new ArrayList<>();
+        gpus.add(dbHelper.getVga(valorMaximo));
     // acessa banco e processa lista atras do melhor dentro do orcamento
         return gpus;
     }
 
     public List<Storage> getStorageUnits(float valorMaximo) {
-        List<Storage> units = null;
+        List<Storage> units = new ArrayList<>();
+        units.add(dbHelper.getStorage(valorMaximo));
     // acessa banco e processa lista atras do melhor dentro do orcamento
         return units;
     }

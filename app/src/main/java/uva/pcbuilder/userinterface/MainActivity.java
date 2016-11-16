@@ -1,6 +1,7 @@
 package uva.pcbuilder.userinterface;
 
 import android.animation.Animator;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +18,8 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 import java.util.ArrayList;
 
 import uva.pcbuilder.R;
+import uva.pcbuilder.database.DbInflater;
+import uva.pcbuilder.dominio.Computer;
 import uva.pcbuilder.userinterface.adapters.BottomViewPagerAdapter;
 import uva.pcbuilder.userinterface.fragments.bottomnavigation.FavoritosFragment;
 import uva.pcbuilder.userinterface.fragments.bottomnavigation.PartPickerFragment;
@@ -24,6 +27,9 @@ import uva.pcbuilder.userinterface.fragments.bottomnavigation.PcBuilderFragment;
 
 public class MainActivity extends AppCompatActivity
         implements AHBottomNavigation.OnTabSelectedListener {
+
+    public static final String EXTRA_COMPUTER = "computador_custom";
+    private Computer computadorCustom = new Computer();
 
     private Fragment currentFragment;
     private PcBuilderFragment pcBuilderFragment = new PcBuilderFragment();
@@ -43,6 +49,11 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        new DbInflater(this).inflate(); // Inflar banco
+
+        // Computador que será preenchido na aba de escolha manual de peças
+        partPickerFragment.setComputadorCustom(computadorCustom);
+
         initUI();
 
         getSupportActionBar().hide();
@@ -52,6 +63,15 @@ public class MainActivity extends AppCompatActivity
         bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
         viewPagerBottom = (AHBottomNavigationViewPager) findViewById(R.id.view_pager_bottom);
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floating_action_button);
+        floatingActionButton.setImageResource(R.drawable.ic_cart);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, CarrinhoActivity.class);
+                i.putExtra(EXTRA_COMPUTER, computadorCustom);
+                startActivity(i);
+            }
+        });
 
         //Aqui onde é adicionado os fragments no bottomview
         viewPagerBottom.setOffscreenPageLimit(2);
