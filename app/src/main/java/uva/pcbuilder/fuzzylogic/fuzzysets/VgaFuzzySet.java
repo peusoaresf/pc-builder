@@ -15,12 +15,12 @@ public class VgaFuzzySet implements FuzzySet {
 
     public VgaFuzzySet() {
         precoVGA = new FuzzyFunction[6];
-        precoVGA[0] = new VgaTrapezoidFunction(Valor.MB);
-        precoVGA[1] = new VgaTrapezoidFunction(Valor.B);
-        precoVGA[2] = new VgaTrapezoidFunction(Valor.M);
-        precoVGA[3] = new VgaTrapezoidFunction(Valor.A);
-        precoVGA[4] = new VgaTrapezoidFunction(Valor.MA);
-        precoVGA[5] = new VgaTrapezoidFunction(Valor.E);
+        precoVGA[0] = new TrapezoidFunction(Valor.MB);
+        precoVGA[1] = new TrapezoidFunction(Valor.B);
+        precoVGA[2] = new TrapezoidFunction(Valor.M);
+        precoVGA[3] = new TrapezoidFunction(Valor.A);
+        precoVGA[4] = new TrapezoidFunction(Valor.MA);
+        precoVGA[5] = new TrapezoidFunction(Valor.E);
 
         // conjunto nebuloso do orcamento
         // MB

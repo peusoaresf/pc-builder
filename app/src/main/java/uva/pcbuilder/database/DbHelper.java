@@ -32,7 +32,8 @@ public class DbHelper extends SQLiteOpenHelper {
     // Select de peca com preco ate "valor"
     private static final String SELECT_PART_WITH_PRICE = "select * from TABLE " +
                                                          "where COLUMN <= PRICE " +
-                                                         "EXTRA_CONDITIONS";
+                                                         "EXTRA_CONDITIONS " +
+                                                         "order by price  DESC";
 
     // Tabela Motherboard
     private static final String MOTHERBOARD_TABLE_NAME = "motherboards";
@@ -952,12 +953,9 @@ public class DbHelper extends SQLiteOpenHelper {
             Cursor res = db.rawQuery("select * from " + VGA_TABLE_NAME, null);
             res.moveToFirst();
 
-            System.out.println("Dentro select");
-
             while (!res.isAfterLast()) {
                 String brand = res.getString(res.getColumnIndex(VGA_COLUMN_BRAND));
                 String model = res.getString(res.getColumnIndex(VGA_COLUMN_MODEL));
-                System.out.println(brand);
                 int score = res.getInt(res.getColumnIndex(VGA_COLUMN_SCORE));
                 float price = res.getFloat(res.getColumnIndex(VGA_COLUMN_PRICE));
                 float powerConsumption = res.getFloat(res.getColumnIndex(VGA_COLUMN_POWERCONSUMPTION));

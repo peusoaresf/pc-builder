@@ -22,18 +22,6 @@ public class TrapezoidFunction implements FuzzyFunction {
     }
 
     @Override
-    public void setInterval(int left, int right) {
-        this.left = left;
-        this.right = right;
-    }
-
-    @Override
-    public void setMiddle(int middleLeft, int middleRight) {
-        this.middleLeft = middleLeft;
-        this.middleRight = middleRight;
-    }
-
-    @Override
     public void fuzzification(float t) {
         // se for uma curva trapezoidal com inicio e fim
         if(right > ANY_RIGHT && middleRight > ANY_RIGHT && left > ANY_LEFT && middleLeft > ANY_LEFT) {
@@ -93,10 +81,38 @@ public class TrapezoidFunction implements FuzzyFunction {
     }
 
     @Override
-    public float defuzzification(float f) {
-        // defuzzification precisa ser reescrito
-        // por uma conclusao de regra
-        return -1;
+    public float defuzzification(float relevance) {
+        float growth;
+        float defuzziValue;
+
+        if (this.getValor().equals(Valor.MB)) {
+            growth = right - middleRight;
+            defuzziValue =  right - (growth * relevance);
+        }
+        else if (this.getValor().equals(Valor.E)) {
+            growth = middleLeft - left;
+            defuzziValue = left + (growth * relevance);
+        }
+        else {
+            growth = middleRight - middleLeft;
+            float curva1 = left + (growth * relevance);
+            float curva2 = right - (growth * relevance);
+            defuzziValue = (curva1 + curva2)/2;
+        }
+
+        return defuzziValue;
+    }
+
+    @Override
+    public void setInterval(int left, int right) {
+        this.left = left;
+        this.right = right;
+    }
+
+    @Override
+    public void setMiddle(int middleLeft, int middleRight) {
+        this.middleLeft = middleLeft;
+        this.middleRight = middleRight;
     }
 
     @Override

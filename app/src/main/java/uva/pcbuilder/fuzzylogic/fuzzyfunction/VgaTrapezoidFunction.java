@@ -6,6 +6,7 @@ import uva.pcbuilder.fuzzylogic.Valor;
  * Created by peuso on 29/09/2016.
  */
 
+@Deprecated
 public class VgaTrapezoidFunction extends TrapezoidFunction {
 
 

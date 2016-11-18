@@ -46,7 +46,7 @@ public class PartPickerFragment extends Fragment implements ActionBar.TabListene
         viewPager.setAdapter(mAdapter);
         viewPager.addOnPageChangeListener(this);
 
-        String [] tabs = new String[]{"VGA", "CPU", "MOBO", "RAM", "PSU", "STORAGE", "LEITOR DISCO", "GABINETE"};
+        String [] tabs = new String[]{"VGA", "MOBO", "CPU", "RAM", "PSU", "STORAGE", "LEITOR DISCO", "GABINETE"};
 
         for (String tab : tabs) {
             TextView t = new TextView(super.getActivity());

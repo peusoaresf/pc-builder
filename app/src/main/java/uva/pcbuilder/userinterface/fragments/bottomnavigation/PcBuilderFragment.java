@@ -73,6 +73,7 @@ public class PcBuilderFragment extends Fragment implements View.OnClickListener 
                 else {
                     PcBuilder pcBuilder = new PcBuilder(v.getContext());
                     Computer c = pcBuilder.buildComputer(orcamento);
+
                     if (c.toList().isEmpty()) {
                         Toast.makeText(this.getActivity(), "Não foi possível montar o computador", Toast.LENGTH_SHORT).show();
                     } else {

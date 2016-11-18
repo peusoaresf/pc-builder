@@ -14,6 +14,13 @@ import uva.pcbuilder.dominio.Processor;
 import uva.pcbuilder.dominio.Psu;
 import uva.pcbuilder.dominio.Storage;
 import uva.pcbuilder.dominio.VideoGraphicsAdapter;
+import uva.pcbuilder.fuzzylogic.fuzzycontrollers.CaseFuzzySystem;
+import uva.pcbuilder.fuzzylogic.fuzzycontrollers.CpuFuzzySystem;
+import uva.pcbuilder.fuzzylogic.fuzzycontrollers.MoboFuzzySystem;
+import uva.pcbuilder.fuzzylogic.fuzzycontrollers.ODDFuzzySystem;
+import uva.pcbuilder.fuzzylogic.fuzzycontrollers.PsuFuzzySystem;
+import uva.pcbuilder.fuzzylogic.fuzzycontrollers.RamFuzzySystem;
+import uva.pcbuilder.fuzzylogic.fuzzycontrollers.StorageFuzzySystem;
 import uva.pcbuilder.fuzzylogic.fuzzycontrollers.VgaFuzzySystem;
 
 /**
@@ -31,45 +38,43 @@ public class PcBuilder {
 
         Computer computer = new Computer();
 
-//        Motherboard mobo;
-//        Processor cpu;
-//        OpticalDiskDriver opticalDiskDriver;
-//        Case pcCase;
-//        List<MainMemory> ramSticks = new ArrayList<>();
+        MoboFuzzySystem motherboardFuzzySystem = new MoboFuzzySystem();
+        Motherboard mobo = partPicker.getMobo(motherboardFuzzySystem.calcularValorMaximo(budget));
+
+        CpuFuzzySystem processorFuzzySystem = new CpuFuzzySystem();
+        Processor cpu = null;
+        if (mobo != null)
+            cpu = partPicker.getCpu(processorFuzzySystem.calcularValorMaximo(budget), mobo);
+
+        ODDFuzzySystem opticalDiscDriverFuzzySystem = new ODDFuzzySystem();
+        OpticalDiskDriver opticalDiskDriver = partPicker.getOpticalDiscDriver(opticalDiscDriverFuzzySystem.calcularValorMaximo(budget));
+
+        CaseFuzzySystem caseFuzzySystem = new CaseFuzzySystem();
+        Case pcCase = partPicker.getPcCase(caseFuzzySystem.calcularValorMaximo(budget));
+
+        List<MainMemory> ramSticks = new ArrayList<>();
+        RamFuzzySystem mainMemoryFuzzySystem = new RamFuzzySystem();
+        if (mobo != null)
+            ramSticks.addAll(partPicker.getRamSticks(mainMemoryFuzzySystem.calcularValorMaximo(budget), mobo));
+
         List<VideoGraphicsAdapter> gpus = new ArrayList<>();
-//        List<Storage> storageUnits = new ArrayList<>();
-//        Psu psu;
-//
-//        MotherboardFuzzySystem motherboardFuzzySystem = new MotherboardFuzzySystem();
-//        mobo = partPicker.getMobo(motherboardFuzzySystem.calcularValorMaximo(budget));
-//
-//        ProcessorFuzzySystem processorFuzzySystem = new ProcessorFuzzySystem();
-//        cpu = partPicker.getCpu(processorFuzzySystem.calcularValorMaximo(budget), mobo.getCpuSocket());
-//
-//        OpticalDiscDriverFuzzySystem opticalDiscDriverFuzzySystem = new OpticalDiscDriverFuzzySystem();
-//        opticalDiskDriver = partPicker.getOpticalDiscDriver(opticalDiscDriverFuzzySystem.calcularValorMaximo(budget));
-//
-//        CaseFuzzySystem caseFuzzySystem = new CaseFuzzySystem();
-//        pcCase = partPicker.getPcCase(caseFuzzySystem.calcularValorMaximo(budget));
-//
-//        MainMemoryFuzzySystem mainMemoryFuzzySystem = new MainMemoryFuzzySystem();
-//        ramSticks.addAll(partPicker.getRamSticks(mainMemoryFuzzySystem.calcularValorMaximo(budget)));
-//
         VgaFuzzySystem vgaFuzzySystem = new VgaFuzzySystem();
         gpus.addAll(partPicker.getGpus(vgaFuzzySystem.calcularValorMaximo(budget)));
-//
-//        StorageFuzzySystem storageFuzzySystem = new StorageFuzzySystem();
-//        storageUnits.addAll(partPicker.getStorageUnits(storageFuzzySystem.calcularValorMaximo(budget)));
-//
-//        computer.setMotherboard(mobo);
-//        computer.setProcessor(cpu);
-//        computer.setOpticalDiscDriver(opticalDiskDriver);
-//        computer.setCase(pcCase);
-//        computer.setRamSticks(ramSticks);
+
+        List<Storage> storageUnits = new ArrayList<>();
+        StorageFuzzySystem storageFuzzySystem = new StorageFuzzySystem();
+        storageUnits.addAll(partPicker.getStorageUnits(storageFuzzySystem.calcularValorMaximo(budget)));
+
+        computer.setMotherboard(mobo);
+        computer.setProcessor(cpu);
+        computer.setOpticalDiscDriver(opticalDiskDriver);
+        computer.setCase(pcCase);
+        computer.setRamSticks(ramSticks);
         computer.setGpus(gpus);
-//        computer.setStorageUnits(storageUnits);
-//
-//        computer.setPsu(partPicker.getPsu(computer, budget));
+        computer.setStorageUnits(storageUnits);
+
+        PsuFuzzySystem psuFuzzySystem = new PsuFuzzySystem();
+        computer.setPsu(partPicker.getPsu(computer, psuFuzzySystem.calcularValorMaximo(budget)));
 
         return computer;
     }
