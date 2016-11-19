@@ -14,14 +14,12 @@ public class Psu implements Hardware, Serializable {
 
     private int idBanco;
     private int potencia;
-    private int score;
     private float preco;
     private String modelo;
     private String marca;
 
-    public Psu(int potencia, int score, float price, String modelo, String marca) {
+    public Psu(int potencia, float price, String modelo, String marca) {
         this.potencia = potencia;
-        this.score = score;
         this.preco = price;
         this.modelo = modelo;
         this.marca = marca;
@@ -35,16 +33,13 @@ public class Psu implements Hardware, Serializable {
         idBanco = i;
     }
 
-    public float getPrice() {
+    @Override
+    public float getPreco() {
         return preco;
     }
 
     public int getPotencia() {
         return potencia;
-    }
-
-    public int getScore() {
-        return score;
     }
 
     @Override
@@ -61,7 +56,7 @@ public class Psu implements Hardware, Serializable {
         if (example != null)
             return listExample;
         else {
-            example = new Psu(500, 1000, 100, "Modelo#Exemplo", "Marca#Exemplo");
+            example = new Psu(500, 100, "Modelo#Exemplo", "Marca#Exemplo");
             listExample = new ArrayList<>();
             listExample.add(example);
             return listExample;

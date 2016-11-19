@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new DbInflater(this).inflate(); // Inflar banco
+//        new DbInflater(this).inflate(); // Inflar banco
 
         // Computador que será preenchido na aba de escolha manual de peças
         partPickerFragment.setComputadorCustom(computadorCustom);

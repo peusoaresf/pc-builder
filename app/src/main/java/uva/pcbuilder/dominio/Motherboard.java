@@ -41,6 +41,7 @@ public class Motherboard implements Hardware, Serializable {
         return consumoEletrico;
     }
 
+    @Override
     public float getPreco() {
         return preco;
     }

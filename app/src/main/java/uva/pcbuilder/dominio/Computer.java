@@ -130,7 +130,7 @@ public class Computer implements Serializable {
             aux.add(this.getCase());
         if (!this.getRamSticks().isEmpty()) {
             if (this.getRamSticks().get(0) != null)
-            aux.add(this.getRamSticks().get(0));
+                aux.add(this.getRamSticks().get(0));
         }
         if (this.getMotherboard() != null)
             aux.add(this.getMotherboard());
@@ -146,9 +146,10 @@ public class Computer implements Serializable {
         }
         if (!this.getGpus().isEmpty()) {
             if (this.getGpus().get(0) != null)
-            aux.add(this.getGpus().get(0));
+                aux.add(this.getGpus().get(0));
         }
         list = aux;
+
         return list;
     }
 

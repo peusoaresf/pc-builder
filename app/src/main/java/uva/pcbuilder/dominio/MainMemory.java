@@ -15,16 +15,14 @@ public class MainMemory implements Hardware, Serializable {
     private int idBanco;
     private float preco;
     private float consumoEletrico;
-    private int score;
     private String marca;
     private String modelo;
     private String capacidade;
     private String tipo;
 
-    public MainMemory(float preco, float consumoEletrico, int score, String marca, String modelo, String capacidade, String tipo) {
+    public MainMemory(float preco, float consumoEletrico, String marca, String modelo, String capacidade, String tipo) {
         this.preco = preco;
         this.consumoEletrico = consumoEletrico;
-        this.score = score;
         this.marca = marca;
         this.modelo = modelo;
         this.capacidade = capacidade;
@@ -39,16 +37,13 @@ public class MainMemory implements Hardware, Serializable {
         idBanco = i;
     }
 
+    @Override
     public float getPreco() {
         return preco;
     }
 
     public float getConsumoEletrico() {
         return consumoEletrico;
-    }
-
-    public int getScore() {
-        return score;
     }
 
     public String getCapacidade() {
@@ -73,7 +68,7 @@ public class MainMemory implements Hardware, Serializable {
         if (example != null)
             return listExample;
         else {
-            example = new MainMemory(100, 3, 1000, "Marca#Exemplo", "Modelo#Exemplo", "#GB", "TIPO#");
+            example = new MainMemory(100, 3, "Marca#Exemplo", "Modelo#Exemplo", "#GB", "TIPO#");
             listExample = new ArrayList<>();
             listExample.add(example);
             return listExample;

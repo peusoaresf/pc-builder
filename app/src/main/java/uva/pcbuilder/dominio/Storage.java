@@ -35,6 +35,7 @@ public class Storage implements Hardware, Serializable {
         idBanco = i;
     }
 
+    @Override
     public float getPreco() {
         return preco;
     }

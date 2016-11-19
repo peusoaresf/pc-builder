@@ -26,6 +26,6 @@ public class CarrinhoActivity extends AppCompatActivity {
         computadorCustom = (Computer) i.getSerializableExtra(MainActivity.EXTRA_COMPUTER);
 
         ListView listView = (ListView) findViewById(R.id.listViewCarrinho);
-        listView.setAdapter(new CarrinhoAdapter(this, computadorCustom.toList()));
+        listView.setAdapter(new CarrinhoAdapter(this, computadorCustom));
     }
 }

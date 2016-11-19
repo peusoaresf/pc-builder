@@ -41,6 +41,7 @@ public class Processor implements Hardware, Serializable {
         return score;
     }
 
+    @Override
     public float getPreco() {
         return preco;
     }

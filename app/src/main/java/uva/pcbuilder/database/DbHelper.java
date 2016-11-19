@@ -33,7 +33,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String SELECT_PART_WITH_PRICE = "select * from TABLE " +
                                                          "where COLUMN <= PRICE " +
                                                          "EXTRA_CONDITIONS " +
-                                                         "order by price  DESC";
+                                                         " order by price  DESC ";
 
     // Tabela Motherboard
     private static final String MOTHERBOARD_TABLE_NAME = "motherboards";
@@ -66,11 +66,10 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String MAINMEMORY_COLUMN_MODEL = "model";
     private static final String MAINMEMORY_COLUMN_TYPE = "type";
     private static final String MAINMEMORY_COLUMN_CAPACITY = "capacity";
-    private static final String MAINMEMORY_COLUMN_SCORE = "score";
     private static final String MAINMEMORY_COLUMN_POWERCONSUMPTION = "power_consumption";
     private static final String MAINMEMORY_COLUMN_PRICE = "price";
     private static final String CREATE_TABLE_MAINMEMORY = "create table if not exists main_memory " +
-            "(id integer primary key, brand text, model text, type text, capacity text, score integer, " +
+            "(id integer primary key, brand text, model text, type text, capacity text, " +
             "power_consumption float, price decimal(19,4))";
     private static final String DROP_TABLE_MAINMEMORY = "drop table if exists main_memory";
 
@@ -108,9 +107,8 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String PSU_COLUMN_MODEL = "model";
     private static final String PSU_COLUMN_CAPACITY = "capacity";
     private static final String PSU_COLUMN_PRICE = "price";
-    private static final String PSU_COLUMN_SCORE = "score";
     private static final String CREATE_TABLE_PSU = "create table if not exists psu " +
-            "(id integer primary key, brand text, model text, price decimal(19,4), score integer, capacity int)";
+            "(id integer primary key, brand text, model text, price decimal(19,4), capacity int)";
     private static final String DROP_TABLE_PSU = "drop table if exists psu";
 
     // Tabela Storage
@@ -160,11 +158,6 @@ public class DbHelper extends SQLiteOpenHelper {
             "opticaldiskdriver_id integer, case_id integer, psu_id integer, mainmemory_id integer, " +
             "mainmemory_count integer, vga_id integer, vga_count integer, storage_id integer, storage_count integer)";
     private static final String DROP_TABLE_FAVORITE = "drop table if exists favorite_builds";
- 	/*
-	 * colunas
-	 * create
-	 * drop
-	 */
 
 
     public DbHelper(Context context) {
@@ -403,7 +396,7 @@ public class DbHelper extends SQLiteOpenHelper {
     // Metodos sobre a tabela de memoria ram
 
     public void insertMainMemory(String brand, String model, String type,
-                                 String capacity, int score, float powerConsumption, float price) {
+                                 String capacity, float powerConsumption, float price) {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
             ContentValues contentValues = new ContentValues();
@@ -411,7 +404,6 @@ public class DbHelper extends SQLiteOpenHelper {
             contentValues.put(MAINMEMORY_COLUMN_MODEL, model);
             contentValues.put(MAINMEMORY_COLUMN_TYPE, type);
             contentValues.put(MAINMEMORY_COLUMN_CAPACITY, capacity);
-            contentValues.put(MAINMEMORY_COLUMN_SCORE, score);
             contentValues.put(MAINMEMORY_COLUMN_POWERCONSUMPTION, powerConsumption);
             contentValues.put(MAINMEMORY_COLUMN_PRICE, price);
             db.insert(MAINMEMORY_TABLE_NAME, null, contentValues);
@@ -434,10 +426,9 @@ public class DbHelper extends SQLiteOpenHelper {
                 String model = res.getString(res.getColumnIndex(MAINMEMORY_COLUMN_MODEL));
                 String type = res.getString(res.getColumnIndex(MAINMEMORY_COLUMN_TYPE));
                 String capacity = res.getString(res.getColumnIndex(MAINMEMORY_COLUMN_CAPACITY));
-                int score = res.getInt(res.getColumnIndex(MAINMEMORY_COLUMN_SCORE));
                 float powerConsumption = res.getFloat(res.getColumnIndex(MAINMEMORY_COLUMN_POWERCONSUMPTION));
                 float price = res.getFloat(res.getColumnIndex(MAINMEMORY_COLUMN_PRICE));
-                MainMemory mainMemory = new MainMemory(price, powerConsumption, score, brand, model, capacity, type);
+                MainMemory mainMemory = new MainMemory(price, powerConsumption, brand, model, capacity, type);
                 mainMemory.setIdBanco(res.getInt(res.getColumnIndex(MAINMEMORY_COLUMN_ID)));
                 mainMemories.add(mainMemory);
                 res.moveToNext();
@@ -464,10 +455,9 @@ public class DbHelper extends SQLiteOpenHelper {
                 String model = res.getString(res.getColumnIndex(MAINMEMORY_COLUMN_MODEL));
                 String type = res.getString(res.getColumnIndex(MAINMEMORY_COLUMN_TYPE));
                 String capacity = res.getString(res.getColumnIndex(MAINMEMORY_COLUMN_CAPACITY));
-                int score = res.getInt(res.getColumnIndex(MAINMEMORY_COLUMN_SCORE));
                 float powerConsumption = res.getFloat(res.getColumnIndex(MAINMEMORY_COLUMN_POWERCONSUMPTION));
                 float pce = res.getFloat(res.getColumnIndex(MAINMEMORY_COLUMN_PRICE));
-                m = new MainMemory(pce, powerConsumption, score, brand, model, capacity, type);
+                m = new MainMemory(pce, powerConsumption, brand, model, capacity, type);
                 m.setIdBanco(res.getInt(res.getColumnIndex(MAINMEMORY_COLUMN_ID)));
             }
 
@@ -487,7 +477,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String stm = SELECT_PART_WITH_PRICE.replace("TABLE", MAINMEMORY_TABLE_NAME)
                                             .replace("COLUMN", MAINMEMORY_COLUMN_PRICE)
                                             .replace("PRICE", Float.toString(price))
-                                            .replace("EXTRA_CONDITIONS", " AND " + MAINMEMORY_COLUMN_TYPE + " = " + ramType);
+                                            .replace("EXTRA_CONDITIONS", " AND " + MAINMEMORY_COLUMN_TYPE + " = '" + ramType + "'");
 
         try {
             Cursor res = db.rawQuery(stm, null);
@@ -497,10 +487,9 @@ public class DbHelper extends SQLiteOpenHelper {
                 String model = res.getString(res.getColumnIndex(MAINMEMORY_COLUMN_MODEL));
                 String type = res.getString(res.getColumnIndex(MAINMEMORY_COLUMN_TYPE));
                 String capacity = res.getString(res.getColumnIndex(MAINMEMORY_COLUMN_CAPACITY));
-                int score = res.getInt(res.getColumnIndex(MAINMEMORY_COLUMN_SCORE));
                 float powerConsumption = res.getFloat(res.getColumnIndex(MAINMEMORY_COLUMN_POWERCONSUMPTION));
                 float pce = res.getFloat(res.getColumnIndex(MAINMEMORY_COLUMN_PRICE));
-                m = new MainMemory(pce, powerConsumption, score, brand, model, capacity, type);
+                m = new MainMemory(pce, powerConsumption, brand, model, capacity, type);
                 m.setIdBanco(res.getInt(res.getColumnIndex(MAINMEMORY_COLUMN_ID)));
             }
 
@@ -698,7 +687,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String stm = SELECT_PART_WITH_PRICE.replace("TABLE", PROCESSOR_TABLE_NAME)
                                                 .replace("COLUMN", PROCESSOR_COLUMN_PRICE)
                                                 .replace("PRICE", Float.toString(price))
-                                                .replace("EXTRA_CONDITIONS", " AND " + PROCESSOR_COLUMN_SOCKET + " = " + socket);
+                                                .replace("EXTRA_CONDITIONS", " AND " + PROCESSOR_COLUMN_SOCKET + " = '" + socket + "'");
 
         try {
             Cursor res = db.rawQuery(stm, null);
@@ -724,7 +713,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     // Metodos sobre a tabela de fontes
 
-    public void insertPSU(String brand, String model, float price, int score, float capacity) {
+    public void insertPSU(String brand, String model, float price, float capacity) {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
             ContentValues contentValues = new ContentValues();
@@ -732,7 +721,6 @@ public class DbHelper extends SQLiteOpenHelper {
             contentValues.put(PSU_COLUMN_MODEL, model);
             contentValues.put(PSU_COLUMN_CAPACITY, capacity);
             contentValues.put(PSU_COLUMN_PRICE, price);
-            contentValues.put(PSU_COLUMN_SCORE, score);
             db.insert(PSU_TABLE_NAME, null, contentValues);
         }
         finally {
@@ -753,8 +741,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 String model = res.getString(res.getColumnIndex(PSU_COLUMN_MODEL));
                 int capacity = res.getInt(res.getColumnIndex(PSU_COLUMN_CAPACITY));
                 float price = res.getFloat(res.getColumnIndex(PSU_COLUMN_PRICE));
-                int score = res.getInt(res.getColumnIndex(PSU_COLUMN_SCORE));
-                Psu psu = new Psu(capacity, score, price, model, brand);
+                Psu psu = new Psu(capacity, price, model, brand);
                 psu.setIdBanco(res.getInt(res.getColumnIndex(PSU_COLUMN_ID)));
                 psus.add(psu);
                 res.moveToNext();
@@ -780,8 +767,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 String model = res.getString(res.getColumnIndex(PSU_COLUMN_MODEL));
                 int capacity = res.getInt(res.getColumnIndex(PSU_COLUMN_CAPACITY));
                 float pce = res.getFloat(res.getColumnIndex(PSU_COLUMN_PRICE));
-                int score = res.getInt(res.getColumnIndex(PSU_COLUMN_SCORE));
-                psu = new Psu(capacity, score, pce, model, brand);
+                psu = new Psu(capacity, pce, model, brand);
                 psu.setIdBanco(res.getInt(res.getColumnIndex(PSU_COLUMN_ID)));
             }
 
@@ -811,8 +797,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 String model = res.getString(res.getColumnIndex(PSU_COLUMN_MODEL));
                 int capacity = res.getInt(res.getColumnIndex(PSU_COLUMN_CAPACITY));
                 float pce = res.getFloat(res.getColumnIndex(PSU_COLUMN_PRICE));
-                int score = res.getInt(res.getColumnIndex(PSU_COLUMN_SCORE));
-                psu = new Psu(capacity, score, pce, model, brand);
+                psu = new Psu(capacity, pce, model, brand);
                 psu.setIdBanco(res.getInt(res.getColumnIndex(PSU_COLUMN_ID)));
             }
 

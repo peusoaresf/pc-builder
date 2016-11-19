@@ -35,6 +35,7 @@ public class VideoGraphicsAdapter implements Hardware, Serializable {
         idBanco = i;
     }
 
+    @Override
     public float getPreco() {
         return price;
     }

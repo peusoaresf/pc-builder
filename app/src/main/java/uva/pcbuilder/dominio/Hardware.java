@@ -7,4 +7,5 @@ package uva.pcbuilder.dominio;
 public interface Hardware {
     public String getMarca();
     public String getModelo();
+    public float getPreco();
 }
