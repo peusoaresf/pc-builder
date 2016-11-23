@@ -58,6 +58,11 @@ public class OpticalDiskDriver implements Hardware, Serializable {
         return modelo;
     }
 
+    @Override
+    public String getCategoria() {
+        return "Leitor de Disco";
+    }
+
     public static List<Hardware> createExample() {
         if (example != null)
             return listExample;

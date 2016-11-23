@@ -58,6 +58,11 @@ public class VideoGraphicsAdapter implements Hardware, Serializable {
         return modelo;
     }
 
+    @Override
+    public String getCategoria() {
+        return "Placa de Vídeo";
+    }
+
     public static List<Hardware> createExample() {
         if (example != null)
             return listExample;

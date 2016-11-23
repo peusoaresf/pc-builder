@@ -54,9 +54,11 @@ public class CarrinhoAdapter extends BaseAdapter {
         if (!list.isEmpty())
             hw = list.get(position);
         if (hw != null) {
+            TextView categoria = (TextView) view.findViewById(R.id.textCategoriaCarrinho);
             TextView marca = (TextView) view.findViewById(R.id.textMarcaCarrinho);
             TextView modelo = (TextView) view.findViewById(R.id.textModeloCarrinho);
             TextView preco = (TextView) view.findViewById(R.id.textPrecoCarrinho);
+            categoria.setText(hw.getCategoria());
             marca.setText(hw.getMarca());
             modelo.setText(hw.getModelo());
             preco.setText(Float.toString(hw.getPreco()));

@@ -17,27 +17,35 @@
 
         <TextView
             android:text="MarcaExemplo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/textMarcaHardware"
-            android:layout_weight="0.4"
+            android:layout_weight="0.33"
+            android:lines="1"
             android:gravity="center"/>
+        // layout_width setado como 0dp eh necessario, para deixar que o layout_weight funcione.
+        // Era isso que estava evitando que as views ficassem dentro da escala, pois
+        // estava wrap_content anteriormente, o que aparentemente tem "prioridade"
+        // se comparado ao weight...
 
         <TextView
             android:text="ModeloExemplo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/textModelo"
-            android:layout_weight="0.4"
+            android:layout_weight="0.33"
+            android:lines="1"
             android:gravity="center"/>
 
         <Button
             android:text="Adicionar"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/btnAdicionar"
-            android:layout_weight="0.01"
+            android:layout_weight="0.33"
             android:textSize="10sp"
+            android:padding="5dp"
+            android:lines="1"
             android:gravity="center_vertical|center_horizontal|center" />
     </LinearLayout>
 </LinearLayout>

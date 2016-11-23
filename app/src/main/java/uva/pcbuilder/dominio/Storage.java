@@ -58,6 +58,11 @@ public class Storage implements Hardware, Serializable {
         return modelo;
     }
 
+    @Override
+    public String getCategoria() {
+        return "Armazenamento";
+    }
+
     public static List<Hardware> createExample() {
         if (example != null) {
             return listExample;

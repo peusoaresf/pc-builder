@@ -64,6 +64,11 @@ public class Motherboard implements Hardware, Serializable {
         return modelo;
     }
 
+    @Override
+    public String getCategoria() {
+        return "Placa Mãe";
+    }
+
     public static List<Hardware> createExample() {
         if (example != null)
             return listExample;

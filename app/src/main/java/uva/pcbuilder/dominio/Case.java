@@ -46,6 +46,11 @@ public class Case implements Hardware, Serializable {
         return modelo;
     }
 
+    @Override
+    public String getCategoria() {
+        return "Gabinete";
+    }
+
     public static List<Hardware> createExample() {
         if (example != null)
             return listExample;
