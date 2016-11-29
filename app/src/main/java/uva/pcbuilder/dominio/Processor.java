@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class Processor implements Hardware, Serializable {
 
+    // Atributos para peça exemplo
     private static Processor example;
     private static List<Hardware> listExample;
 
@@ -29,21 +30,12 @@ public class Processor implements Hardware, Serializable {
         this.marca = marca;
     }
 
-    public int getIdBanco() {
-        return idBanco;
-    }
-
     public void setIdBanco(int i) {
         idBanco = i;
     }
 
     public int getScore() {
         return score;
-    }
-
-    @Override
-    public float getPreco() {
-        return preco;
     }
 
     public float getConsumoEletrico() {
@@ -55,6 +47,11 @@ public class Processor implements Hardware, Serializable {
     }
 
     @Override
+    public int getIdBanco() {
+        return idBanco;
+    }
+
+    @Override
     public String getMarca() {
         return marca;
     }
@@ -62,6 +59,11 @@ public class Processor implements Hardware, Serializable {
     @Override
     public String getModelo() {
         return modelo;
+    }
+
+    @Override
+    public float getPreco() {
+        return preco;
     }
 
     @Override
@@ -80,6 +82,7 @@ public class Processor implements Hardware, Serializable {
                 "Preço: R$" + preco;
     }
 
+    // Metodo para criar peça exemplo
     public static List<Hardware> createExample() {
         if (example != null)
             return listExample;

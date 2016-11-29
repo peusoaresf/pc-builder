@@ -26,6 +26,8 @@ import uva.pcbuilder.R;
 
 public class PcBuilderFragment extends Fragment implements View.OnClickListener {
 
+    // Tela da tela de montagem automatica de computadores
+
     private FrameLayout fragmentContainer;
 
     private EditText editTextOrcamento;
@@ -46,6 +48,7 @@ public class PcBuilderFragment extends Fragment implements View.OnClickListener 
         return view;
     }
 
+    // Metodo chamado ao mostrar a tela
     public void willBeDisplayed() {
         if (fragmentContainer != null) {
             ((MainActivity) getActivity()).getSupportActionBar().setShowHideAnimationEnabled(false);
@@ -55,6 +58,7 @@ public class PcBuilderFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+    // Metodo chamado ao esconder a tela
     public void willBeHidden() {
         if (fragmentContainer != null) {
             Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_out);

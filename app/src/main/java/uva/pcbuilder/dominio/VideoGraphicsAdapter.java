@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class VideoGraphicsAdapter implements Hardware, Serializable {
 
+    // Atributo para peça exemplo
     private static VideoGraphicsAdapter example;
     private static List<Hardware> listExample;
 
@@ -27,30 +28,26 @@ public class VideoGraphicsAdapter implements Hardware, Serializable {
         this.price = price;
     }
 
-    public int getIdBanco() {
-        return idBanco;
-    }
-
     public void setIdBanco(int i) {
         idBanco = i;
-    }
-
-    @Override
-    public float getPreco() {
-        return price;
     }
 
     public int getScore() {
         return score;
     }
 
+    public float getConsumo() {
+        return consumo;
+    }
+
+    @Override
+    public int getIdBanco() {
+        return idBanco;
+    }
+
     @Override
     public String getMarca() {
         return marca;
-    }
-
-    public float getConsumo() {
-        return consumo;
     }
 
     @Override
@@ -64,6 +61,11 @@ public class VideoGraphicsAdapter implements Hardware, Serializable {
     }
 
     @Override
+    public float getPreco() {
+        return price;
+    }
+
+    @Override
     public String toString() {
         return "PLACA DE VÍDEO\n" +
                 "Marca: " + marca + "\n" +
@@ -73,6 +75,7 @@ public class VideoGraphicsAdapter implements Hardware, Serializable {
                 "Preço: R$" + price;
     }
 
+    // Metodo para criar peça exemplo
     public static List<Hardware> createExample() {
         if (example != null)
             return listExample;

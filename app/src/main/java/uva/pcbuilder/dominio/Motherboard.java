@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class Motherboard implements Hardware, Serializable {
 
+    // Atributos para peça exemplo
     private static Motherboard example;
     private static List<Hardware> listExample;
 
@@ -29,12 +30,6 @@ public class Motherboard implements Hardware, Serializable {
         this.supportedRamType = supportedRamType;
     }
 
-
-
-    public int getIdBanco() {
-        return idBanco;
-    }
-
     public void setIdBanco(int i) {
         idBanco = i;
     }
@@ -49,6 +44,11 @@ public class Motherboard implements Hardware, Serializable {
 
     public String getSupportedRamType() {
         return supportedRamType;
+    }
+
+    @Override
+    public int getIdBanco() {
+        return idBanco;
     }
 
     @Override
@@ -82,6 +82,7 @@ public class Motherboard implements Hardware, Serializable {
                 "Preço: R$" + preco;
     }
 
+    // Metodo para peça exemplo
     public static List<Hardware> createExample() {
         if (example != null)
             return listExample;

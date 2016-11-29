@@ -8,8 +8,6 @@ public interface Hardware {
     public int getIdBanco();
     public String getMarca();
     public String getModelo();
-    public float getPreco();
     public String getCategoria();
-    // Analisar a sobescrita do metodo toString em todos as entidades na hierarquia.
-    // Serviria para mostrar todos os detalhes de dado componente ao ser selecionado no listview.
+    public float getPreco();
 }

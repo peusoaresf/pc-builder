@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 
 public class BottomViewPagerAdapter extends FragmentPagerAdapter {
+    // Adapter para a navegação entre abas inferiores
 
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private Fragment currentFragment;
@@ -22,7 +23,11 @@ public class BottomViewPagerAdapter extends FragmentPagerAdapter {
 
     public void add(Fragment frag) {
         this.fragments.add(frag);
+    }
 
+    // Retorna o fragmento corrente
+    public Fragment getCurrentFragment() {
+        return currentFragment;
     }
 
     @Override
@@ -41,12 +46,5 @@ public class BottomViewPagerAdapter extends FragmentPagerAdapter {
             currentFragment = ((Fragment) object);
         }
         super.setPrimaryItem(container, position, object);
-    }
-
-    /**
-     * Get the current fragment
-     */
-    public Fragment getCurrentFragment() {
-        return currentFragment;
     }
 }

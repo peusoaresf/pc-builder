@@ -11,6 +11,8 @@ import android.os.Bundle;
  */
 
 public class ComputerSpecsDialogFragment extends DialogFragment {
+    // Janela de dialogo para mostrar especificacoes das peças no carrinho
+    // ou na selecao manual
     String specs;
     @Override
     public Dialog onCreateDialog(Bundle savedInstance) {

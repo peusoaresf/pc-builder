@@ -9,6 +9,7 @@ import java.util.Date;
  */
 
 public class DateHelper {
+    // Classe para auxiliar nas instancias de datas
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
     private DateHelper() {}
     public static Date stringToDate(String inputDate) {

@@ -7,6 +7,8 @@ import uva.pcbuilder.fuzzylogic.fuzzyfunction.FuzzyFunction;
  */
 
 public class FuzzyRule {
+    // Uma regra nebulosa tem uma funcao como antecedente da regra
+    // e uma funcao como conclusao
 
     FuzzyFunction antecedentFunction;
     FuzzyFunction conclusion;

@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class Computer implements Serializable {
 
+    // Atributo do pc de exemplo
     private static Computer example;
 
     private Motherboard mobo;
@@ -104,6 +105,7 @@ public class Computer implements Serializable {
         return storageUnits;
     }
 
+    // Adiciona uma peça de hardware ao computador
     public void setHardware(Hardware hw) {
         if (hw instanceof Case)
             this.setCase((Case) hw);
@@ -123,6 +125,8 @@ public class Computer implements Serializable {
             this.addGpu((VideoGraphicsAdapter) hw);
     }
 
+    // Metodo que joga todas as pecas do computador em uma lista de objetos que
+    // implementam Hardware
     public List<? extends Hardware> toList() {
         List<? extends Hardware> list;
         List<Hardware> aux = new ArrayList<>();
@@ -153,6 +157,7 @@ public class Computer implements Serializable {
         return list;
     }
 
+    // Metodo para criar computador de exemplo
     public static Computer createExample() {
         if (example != null) {
             return example;

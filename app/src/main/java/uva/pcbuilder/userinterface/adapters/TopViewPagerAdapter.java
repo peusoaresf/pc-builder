@@ -19,6 +19,7 @@ import uva.pcbuilder.userinterface.fragments.swipeviews.SelecaoMOBOFragment;
  */
 
 public class TopViewPagerAdapter extends FragmentPagerAdapter {
+    // Adapter para navegação entre abas superiores
 
     private static final int TAB_COUNT = 8;
 

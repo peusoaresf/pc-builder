@@ -9,6 +9,9 @@ import uva.pcbuilder.fuzzylogic.Valor;
 @Deprecated
 public class VgaTrapezoidFunction extends TrapezoidFunction {
 
+    // Classe antiga, nao é mais utilizada, a forma de defuzzificacao foi melhor implementada
+    // na funcao trapezoidal
+
 
     public VgaTrapezoidFunction(Valor valor) {
         super(valor);

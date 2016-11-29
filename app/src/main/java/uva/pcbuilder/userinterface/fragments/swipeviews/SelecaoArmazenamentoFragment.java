@@ -27,6 +27,8 @@ import uva.pcbuilder.userinterface.adapters.HardwareAdapter;
 
 public class SelecaoArmazenamentoFragment extends Fragment implements AdapterView.OnItemClickListener {
 
+    // Fragments para mostrar em telas separadas a lista de cada categoria de peças
+
     private DbHelper dbHelper;
     private List<? extends Hardware> unidadesArmazenamento;
 

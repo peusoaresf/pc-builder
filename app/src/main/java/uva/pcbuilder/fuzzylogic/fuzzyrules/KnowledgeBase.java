@@ -10,6 +10,9 @@ import uva.pcbuilder.fuzzylogic.fuzzyfunction.FuzzyFunctionGroup;
 
 public class KnowledgeBase {
 
+    // A base de conhecimento recebe um grupo de conjuntos nebulosos e descreve as regras
+    // conforme as variaveis linguisticas dos conjuntos
+
     private static final int MB = Valor.MB.getPosicaoSet();
     private static final int B  = Valor.B.getPosicaoSet();
     private static final int M  = Valor.M.getPosicaoSet();
@@ -20,6 +23,7 @@ public class KnowledgeBase {
     private FuzzyRule[] rules = new FuzzyRule[6];
 
     public KnowledgeBase(FuzzyFunctionGroup fG) {
+        // Por exemplo, se ORCAMENTO MUITO BAIXO, entao VALOR_PEÇA MUITO BAIXO
         rules[0] = new FuzzyRule(fG.getAntecedent()[MB], fG.getConclusion()[MB]);
         rules[1] = new FuzzyRule(fG.getAntecedent()[B], fG.getConclusion()[B]);
         rules[2] = new FuzzyRule(fG.getAntecedent()[M], fG.getConclusion()[M]);

@@ -5,6 +5,10 @@ package uva.pcbuilder.fuzzylogic;
  */
 
 public enum Valor {
+
+    // Enum para auxiliar a utilizacao de variaveis linguisticas na
+    // manipulacao dos arrays de funcoes nebulosas
+
     // Muito baixo, baixo, medio, alto, muito alto, entusiasta
     MB,B, M, A, MA, E;
 

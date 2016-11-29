@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class Storage implements Hardware, Serializable {
 
+    // Atributo para peça exemplo
     private static Storage example;
     private static List<Hardware> listExample;
 
@@ -27,17 +28,8 @@ public class Storage implements Hardware, Serializable {
         this.modelo = modelo;
     }
 
-    public int getIdBanco() {
-        return idBanco;
-    }
-
     public void setIdBanco(int i) {
         idBanco = i;
-    }
-
-    @Override
-    public float getPreco() {
-        return preco;
     }
 
     public float getConsumoEletrico() {
@@ -46,6 +38,11 @@ public class Storage implements Hardware, Serializable {
 
     public String getCapacidade() {
         return capacidade;
+    }
+
+    @Override
+    public int getIdBanco() {
+        return idBanco;
     }
 
     @Override
@@ -64,6 +61,11 @@ public class Storage implements Hardware, Serializable {
     }
 
     @Override
+    public float getPreco() {
+        return preco;
+    }
+
+    @Override
     public String toString() {
         return "ARMAZENAMENTO\n" +
                 "Marca: " + marca + "\n" +
@@ -73,6 +75,7 @@ public class Storage implements Hardware, Serializable {
                 "Preço: R$" + preco;
     }
 
+    // Metodo para criar peça exemplo
     public static List<Hardware> createExample() {
         if (example != null) {
             return listExample;

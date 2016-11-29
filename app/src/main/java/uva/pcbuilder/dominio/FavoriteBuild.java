@@ -10,6 +10,7 @@ import uva.pcbuilder.util.DateHelper;
 
 public class FavoriteBuild {
 
+    // Atributo de exemplo
     private static FavoriteBuild example;
 
     private int idBanco;
@@ -40,6 +41,7 @@ public class FavoriteBuild {
         return computer;
     }
 
+    // Metodo para criar um favorito exemplo
     public static FavoriteBuild createExample() {
         if (example != null)
             return example;

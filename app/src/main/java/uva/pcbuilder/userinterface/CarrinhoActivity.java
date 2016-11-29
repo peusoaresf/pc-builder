@@ -31,6 +31,8 @@ import uva.pcbuilder.util.DateHelper;
 
 public class CarrinhoActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
 
+    // Tela do "carrinho", onde é listada a lista de hardwares do pc montado automaticamente ou manualmente
+
     private List<? extends Hardware> list;
 
     private Button btnSalvarFav;
@@ -57,6 +59,9 @@ public class CarrinhoActivity extends AppCompatActivity implements AdapterView.O
         ComputerSpecsDialogFragment.showDialog(getFragmentManager(), list.get(position).toString());
     }
 
+    // É possivel salvar a build sem erro,
+    // mas ao tentar recupera-la o app congela.
+    // Nao houve tempo de corrigir
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

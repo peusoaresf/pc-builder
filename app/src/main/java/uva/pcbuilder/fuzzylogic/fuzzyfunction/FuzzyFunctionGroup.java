@@ -5,6 +5,8 @@ package uva.pcbuilder.fuzzylogic.fuzzyfunction;
  */
 
 public class FuzzyFunctionGroup {
+    // Um grupo de conjuntos nebulosas é usado para representar as variaveis linguisticas
+    // tanto de entrada quanto de saida
     private FuzzyFunction[] antecedent;
     private FuzzyFunction[] conclusion;
 

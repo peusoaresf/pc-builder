@@ -7,6 +7,8 @@ import uva.pcbuilder.fuzzylogic.Valor;
  */
 
 public class TrapezoidFunction implements FuzzyFunction {
+    // Funcao Nebulosa em forma trapezoidal
+    // Implementa os calculos necessarios para avaliar uma entrada
 
     public static final int ANY_LEFT = -10;
     public static final int ANY_RIGHT = -10;

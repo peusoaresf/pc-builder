@@ -10,6 +10,11 @@ import uva.pcbuilder.dominio.Psu;
  */
 public class PsuPicker {
 
+    /*
+        Não houve tempo hábil para completar a classe que iria  determinar
+        a melhor fonte para um computador
+     */
+
     public Psu pickRecommendedPsu(List<Psu> psus, Computer pc) {
         Psu psu = null;
 

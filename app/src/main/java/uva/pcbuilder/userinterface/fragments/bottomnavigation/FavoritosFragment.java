@@ -25,8 +25,15 @@ import uva.pcbuilder.userinterface.adapters.FavoritoAdapter;
 
 public class FavoritosFragment extends Fragment implements AdapterView.OnItemClickListener {
 
-    private FrameLayout fragmentContainer;
+    // ##############################################
+    // Fragment de interface para a aba de favoritos,
+    // não houve tempo hábil para terminar seu desenvolvimento..
+    // Houve erro com o banco de dados, e apesar de ser possível adicionar favoritos,
+    // ao tentar recuperá-los a aplicação congela e não inica.
+    // ##############################################
+
     private DbHelper dbHelper;
+    private FrameLayout fragmentContainer;
 
     private List<FavoriteBuild> favoritos;
 
@@ -34,14 +41,19 @@ public class FavoritosFragment extends Fragment implements AdapterView.OnItemCli
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_favoritos, container, false);
+
         dbHelper = new DbHelper(view.getContext());
 
         fragmentContainer = (FrameLayout) view.findViewById(R.id.activity_favoritos);
 
         ListView listView = (ListView) view.findViewById(R.id.listViewFavoritos);
 
+        // ## Ponto onde  a aplicação para de iniciar caso tente recuperar os favoritos salvos
 //        favoritos = dbHelper.getAllFavoriteBuilds();
+
+        // A lista de favoritos está iniciado como vazia apenas para fins de exemplo
         favoritos = new ArrayList<>();
+
         if (favoritos.isEmpty())
             favoritos.add(FavoriteBuild.createExample());
 
@@ -51,6 +63,7 @@ public class FavoritosFragment extends Fragment implements AdapterView.OnItemCli
         return view;
     }
 
+    // Metodo chamado quando esse fragment será mostrado na tela
     public void willBeDisplayed() {
         if (fragmentContainer != null) {
             ((MainActivity) getActivity()).getSupportActionBar().setShowHideAnimationEnabled(false);
@@ -60,6 +73,7 @@ public class FavoritosFragment extends Fragment implements AdapterView.OnItemCli
         }
     }
 
+    // Metodo chamado quando esse fragment "sair" da tela
     public void willBeHidden() {
         if (fragmentContainer != null) {
             Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_out);
@@ -67,6 +81,7 @@ public class FavoritosFragment extends Fragment implements AdapterView.OnItemCli
         }
     }
 
+    // Clique da listview
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String nomeFavorito = "";

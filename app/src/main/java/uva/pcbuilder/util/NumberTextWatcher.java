@@ -6,6 +6,8 @@ package uva.pcbuilder.util;
 
 public class NumberTextWatcher { //implements TextWatcher {
 
+    // Classe desenhada para auxiliar na entrada de numeros na tela de montagem automatica.
+    // Nao foi utilizada pois requeria API maior que a do dispositivo que tinha disponivel para testes.
 //    private final DecimalFormat df;
 //    private final DecimalFormat dfnd;
 //    private final EditText et;

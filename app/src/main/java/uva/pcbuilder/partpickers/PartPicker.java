@@ -29,11 +29,13 @@ public class PartPicker {
         dbHelper = new DbHelper(context);
         psuPicker = new PsuPicker();
     }
-
-    // Eh preciso ajustar os metodos no banco para retornar a lista
-    // de pecas com o valor menor  que o maximo, para que o partpicker tenha a inteligencia
-    // de decidir qual retornar ou quantos de tal peca por no pc.
-
+    /*
+     * Eh preciso ajustar os metodos no banco para retornar a lista
+     * de pecas com o valor menor  que o maximo, para que o partpicker tenha a inteligencia
+     * de decidir qual retornar ou a quantidade de tal peca por no pc.
+     * CLASSE NÃO ESTÁ COMPLETADA, MÉTODOS ESTÃO SIMPLISTAS PARA DEMONSTRAR
+     * FUNCIONALIDADE DO APP.
+     */
     public Motherboard getMobo(float valorMaximo) {
         Motherboard motherboard = null;
         // Eh preciso passar o valorMaximo calculado de

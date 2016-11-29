@@ -22,6 +22,9 @@ public class InferenceEngine {
     }
 
     public void evaluateRules() {
+        // percorre as regras e as avalia.
+        // Se a pertinencia for maior que 0 a regra é considerada e eh calculado
+        // a defuzzificacao da conclusao
         for (int i = 0; i < rules.length; i++) {
             float relevance = rules[i].getAntecedentFunction().getRelevanceValue();
             if (relevance > 0){
@@ -33,6 +36,9 @@ public class InferenceEngine {
     }
 
     public float getOutPut() {
+        // Realiza o calculo baseado no valor de fuzzificacao e defuzzificao para
+        // retornar um preço exato da peça
+
         // soma da multiplicacao de cada w por seu v respectivo
         Float somaWxV = 0f;
         // soma de todos os w

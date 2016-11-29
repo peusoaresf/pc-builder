@@ -25,7 +25,6 @@ public class CarrinhoAdapter extends BaseAdapter {
     private Context context;
     private List<? extends Hardware> list;
 
-
     public CarrinhoAdapter(Context c, List<? extends Hardware> l) {
         this.list = l;
         this.context = c;

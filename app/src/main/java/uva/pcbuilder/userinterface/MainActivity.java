@@ -28,18 +28,21 @@ import uva.pcbuilder.userinterface.fragments.bottomnavigation.PcBuilderFragment;
 public class MainActivity extends AppCompatActivity
         implements AHBottomNavigation.OnTabSelectedListener {
 
+    // Atributo para enviar um objeto computador para a tela do carrinho
+    // a partir do floating button
     public static final String EXTRA_COMPUTER = "computador_custom";
     private Computer computadorCustom = new Computer();
 
+    // fragments com as telas principais da navegação inferior
     private Fragment currentFragment;
     private PcBuilderFragment pcBuilderFragment = new PcBuilderFragment();
     private FavoritosFragment favoritosFragment = new FavoritosFragment();
     private PartPickerFragment partPickerFragment = new PartPickerFragment();
 
+    // Atributos da UI
     private BottomViewPagerAdapter bottomViewPagerAdapter;
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
 
-    // UI
     private AHBottomNavigationViewPager viewPagerBottom;
     private AHBottomNavigation bottomNavigation;
     private FloatingActionButton floatingActionButton;
@@ -49,17 +52,18 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        new DbInflater(this).inflate(); // Inflar banco
+        // Apenas instanciado quando for necessario inflar a base de dados
+//        new DbInflater(this).inflate();
 
         // Computador que será preenchido na aba de escolha manual de peças
         partPickerFragment.setComputadorCustom(computadorCustom);
 
-        initUI();
+        startUI();
 
         getSupportActionBar().hide();
     }
 
-    private void initUI() {
+    private void startUI() {
         bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
         viewPagerBottom = (AHBottomNavigationViewPager) findViewById(R.id.view_pager_bottom);
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floating_action_button);
@@ -103,6 +107,7 @@ public class MainActivity extends AppCompatActivity
         bottomNavigation.setCurrentItem(1);
     }
 
+    // listener de troca de abas inferiores
     @Override
     public boolean onTabSelected(int position, boolean wasSelected) {
         if (currentFragment == null) {
@@ -137,6 +142,7 @@ public class MainActivity extends AppCompatActivity
             pcBuilderFragment.willBeDisplayed();
         }
 
+        // Desenha o floating button na aba de montagem manual
         if (position == 2) {
             bottomNavigation.setNotification("", 1);
 
@@ -152,9 +158,7 @@ public class MainActivity extends AppCompatActivity
                     .setInterpolator(new OvershootInterpolator())
                     .setListener(new Animator.AnimatorListener() {
                         @Override
-                        public void onAnimationStart(Animator animation) {
-
-                        }
+                        public void onAnimationStart(Animator animation) { }
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             floatingActionButton.animate()
@@ -162,18 +166,15 @@ public class MainActivity extends AppCompatActivity
                                     .start();
                         }
                         @Override
-                        public void onAnimationCancel(Animator animation) {
-
-                        }
+                        public void onAnimationCancel(Animator animation) { }
                         @Override
-                        public void onAnimationRepeat(Animator animation) {
-
-                        }
+                        public void onAnimationRepeat(Animator animation) { }
                     })
                     .start();
 
         }
         else {
+            // Se nao o esconde
             if (floatingActionButton.getVisibility() == View.VISIBLE) {
                 floatingActionButton.animate()
                         .alpha(0)
@@ -183,9 +184,7 @@ public class MainActivity extends AppCompatActivity
                         .setInterpolator(new LinearOutSlowInInterpolator())
                         .setListener(new Animator.AnimatorListener() {
                             @Override
-                            public void onAnimationStart(Animator animation) {
-
-                            }
+                            public void onAnimationStart(Animator animation) { }
                             @Override
                             public void onAnimationEnd(Animator animation) {
                                 floatingActionButton.setVisibility(View.GONE);
@@ -195,9 +194,7 @@ public class MainActivity extends AppCompatActivity
                                 floatingActionButton.setVisibility(View.GONE);
                             }
                             @Override
-                            public void onAnimationRepeat(Animator animation) {
-
-                            }
+                            public void onAnimationRepeat(Animator animation) { }
                         })
                         .start();
             }

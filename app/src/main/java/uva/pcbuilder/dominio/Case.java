@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class Case implements Hardware, Serializable {
 
+    // Atributos da peça de exemplo
     private static Case example;
     private static List<Hardware> listExample;
 
@@ -23,17 +24,13 @@ public class Case implements Hardware, Serializable {
         this.marca = marca;
     }
 
-    public int getIdBanco() {
-        return idBanco;
-    }
-
     public void setIdBanco(int i) {
         idBanco = i;
     }
 
     @Override
-    public float getPreco() {
-        return preco;
+    public int getIdBanco() {
+        return idBanco;
     }
 
     @Override
@@ -44,6 +41,11 @@ public class Case implements Hardware, Serializable {
     @Override
     public String getModelo() {
         return modelo;
+    }
+
+    @Override
+    public float getPreco() {
+        return preco;
     }
 
     @Override
@@ -59,6 +61,7 @@ public class Case implements Hardware, Serializable {
                 "Preço: R$" + preco;
     }
 
+    // Metodo para criar uma peça de exemplo
     public static List<Hardware> createExample() {
         if (example != null)
             return listExample;
