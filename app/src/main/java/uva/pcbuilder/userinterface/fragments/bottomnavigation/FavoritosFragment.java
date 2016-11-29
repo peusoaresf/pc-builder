@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import uva.pcbuilder.R;
@@ -39,8 +40,8 @@ public class FavoritosFragment extends Fragment implements AdapterView.OnItemCli
 
         ListView listView = (ListView) view.findViewById(R.id.listViewFavoritos);
 
-        favoritos = dbHelper.getAllFavoriteBuilds();
-
+//        favoritos = dbHelper.getAllFavoriteBuilds();
+        favoritos = new ArrayList<>();
         if (favoritos.isEmpty())
             favoritos.add(FavoriteBuild.createExample());
 

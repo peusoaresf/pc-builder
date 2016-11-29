@@ -63,6 +63,16 @@ public class VideoGraphicsAdapter implements Hardware, Serializable {
         return "Placa de Vídeo";
     }
 
+    @Override
+    public String toString() {
+        return "PLACA DE VÍDEO\n" +
+                "Marca: " + marca + "\n" +
+                "Modelo: " + modelo + "\n" +
+                "Consumo: " + consumo + "W\n" +
+                "Score: " + score + "\n" +
+                "Preço: R$" + price;
+    }
+
     public static List<Hardware> createExample() {
         if (example != null)
             return listExample;

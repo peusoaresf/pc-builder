@@ -5,6 +5,7 @@ package uva.pcbuilder.dominio;
  */
 
 public interface Hardware {
+    public int getIdBanco();
     public String getMarca();
     public String getModelo();
     public float getPreco();

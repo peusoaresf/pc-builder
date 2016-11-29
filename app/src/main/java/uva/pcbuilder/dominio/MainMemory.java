@@ -69,6 +69,17 @@ public class MainMemory implements Hardware, Serializable {
         return "Memória RAM";
     }
 
+    @Override
+    public String toString() {
+        return "MEMÓRIA RAM\n" +
+                "Marca: " + marca + "\n" +
+                "Modelo: " + modelo + "\n" +
+                "Tamanho: " + capacidade + "\n" +
+                "Tipo: " + tipo + "\n" +
+                "Consumo: " + consumoEletrico + "W\n" +
+                "Preço: R$" + preco;
+    }
+
     public static List<Hardware> createExample() {
         if (example != null)
             return listExample;

@@ -29,6 +29,8 @@ public class Motherboard implements Hardware, Serializable {
         this.supportedRamType = supportedRamType;
     }
 
+
+
     public int getIdBanco() {
         return idBanco;
     }
@@ -41,17 +43,17 @@ public class Motherboard implements Hardware, Serializable {
         return consumoEletrico;
     }
 
-    @Override
-    public float getPreco() {
-        return preco;
-    }
-
     public String getCpuSocket() {
         return cpuSocket;
     }
 
     public String getSupportedRamType() {
         return supportedRamType;
+    }
+
+    @Override
+    public float getPreco() {
+        return preco;
     }
 
     @Override
@@ -67,6 +69,17 @@ public class Motherboard implements Hardware, Serializable {
     @Override
     public String getCategoria() {
         return "Placa Mãe";
+    }
+
+    @Override
+    public String toString() {
+        return "PLACA MÃE\n" +
+                "Marca: " + marca + "\n" +
+                "Modelo: " + modelo + "\n" +
+                "Socket: " + cpuSocket + "\n" +
+                "Tipo Memória: " + supportedRamType + "\n" +
+                "Consumo: " + consumoEletrico + "W\n" +
+                "Preço: R$" + preco;
     }
 
     public static List<Hardware> createExample() {

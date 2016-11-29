@@ -17,6 +17,7 @@ import uva.pcbuilder.dominio.Computer;
 import uva.pcbuilder.dominio.Hardware;
 import uva.pcbuilder.dominio.Processor;
 import uva.pcbuilder.dominio.Storage;
+import uva.pcbuilder.userinterface.ComputerSpecsDialogFragment;
 import uva.pcbuilder.userinterface.adapters.HardwareAdapter;
 
 /**
@@ -56,6 +57,6 @@ public class SelecaoCPUFragment extends Fragment implements AdapterView.OnItemCl
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(view.getContext(), "Clicou no item: " + (position + 1), Toast.LENGTH_SHORT).show();
+        ComputerSpecsDialogFragment.showDialog(getActivity().getFragmentManager(), cpus.get(position).toString());
     }
 }

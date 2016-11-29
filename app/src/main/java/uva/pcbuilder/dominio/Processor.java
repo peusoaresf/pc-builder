@@ -69,6 +69,17 @@ public class Processor implements Hardware, Serializable {
         return "Processador";
     }
 
+    @Override
+    public String toString() {
+        return "PROCESSADOR\n" +
+                "Marca: " + marca + "\n" +
+                "Modelo: " + modelo + "\n" +
+                "Socket: " + socket + "\n" +
+                "Score: " + score + "\n" +
+                "Consumo: " + consumoEletrico + "W\n" +
+                "Preço: R$" + preco;
+    }
+
     public static List<Hardware> createExample() {
         if (example != null)
             return listExample;

@@ -57,6 +57,15 @@ public class Psu implements Hardware, Serializable {
         return "Fonte";
     }
 
+    @Override
+    public String toString() {
+        return "FONTE\n" +
+                "Marca: " + marca + "\n" +
+                "Modelo: " + modelo + "\n" +
+                "Potencia: " + potencia + "W\n" +
+                "Preço: R$" + preco;
+    }
+
     public static List<Hardware> createExample() {
         if (example != null)
             return listExample;

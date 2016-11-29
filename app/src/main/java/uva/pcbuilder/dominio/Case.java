@@ -51,6 +51,14 @@ public class Case implements Hardware, Serializable {
         return "Gabinete";
     }
 
+    @Override
+    public String toString() {
+        return "GABINETE\n" +
+                "Marca: " + marca + "\n" +
+                "Modelo: " + modelo + "\n" +
+                "Preço: R$" + preco;
+    }
+
     public static List<Hardware> createExample() {
         if (example != null)
             return listExample;

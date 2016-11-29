@@ -9,37 +9,37 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:weightSum="1">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/btn_star_big_on"
             android:id="@+id/imagemFavorito"
-            android:gravity="right"
-            android:padding="5dp"/>
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_weight="0.2"/>
 
         <TextView
             android:text="Favorito Exemplo"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:id="@+id/textNomeFavorito"
             android:textSize="18sp"
             android:gravity="center"
-            android:paddingLeft="30dp"
-            android:paddingTop="5dp"/>
-            //android:padding="5dp"
-
-
+            android:padding="5dp"
+            android:layout_weight="0.4"
+            android:lines="1"/>
 
         <TextView
             android:text="01/01/0001"
-            android:layout_width="match_parent"
-            android:layout_height="32dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:id="@+id/textDataFavorito"
             android:textSize="18sp"
             android:gravity="center"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:layout_weight="0.4"/>
 
 
     </LinearLayout>

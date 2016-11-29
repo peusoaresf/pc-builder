@@ -63,6 +63,16 @@ public class Storage implements Hardware, Serializable {
         return "Armazenamento";
     }
 
+    @Override
+    public String toString() {
+        return "ARMAZENAMENTO\n" +
+                "Marca: " + marca + "\n" +
+                "Modelo: " + modelo + "\n" +
+                "Capacidade: " + capacidade + "\n" +
+                "Consumo: " + consumoEletrico + "W\n" +
+                "Preço: R$" + preco;
+    }
+
     public static List<Hardware> createExample() {
         if (example != null) {
             return listExample;
